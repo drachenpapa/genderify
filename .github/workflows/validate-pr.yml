@@ -1,0 +1,85 @@
+name: Validate pull request
+
+on:
+  pull_request:
+    branches-ignore:
+      - 'renovate/*'
+    types: [opened, edited, reopened, synchronize]
+
+
+permissions:
+  pull-requests: read
+
+
+jobs:
+  lint-pr-title:
+    name: Lint pull request title
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint pull request title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            build
+            chore
+            ci
+            docs
+            feat
+            fix
+            refactor
+            revert
+            test
+          requireScope: false
+
+
+  codeql-analyzis:
+    name: Analyze with CodeQL
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: java-kotlin
+
+      - name: Build
+        run: mvn -B package -DskipTests
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:java-kotlin"
+
+
+  snyk-scan:
+    name: Snyk Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build
+        run: mvn -B package -DskipTests
+
+      - name: Snyk Security Scan
+        uses: snyk/actions/maven@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

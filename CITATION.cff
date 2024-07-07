@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: If you use Skeletor in your research, please cite it using the following metadata.
+authors:
+  - family-names: Steinberg
+    given-names: Henning
+title: "Skeletor"
+version: 1.0.0
+date-released: 2024-07-04
+url: https://github.com/drachenpapa/skeletor
+repository-code: https://github.com/drachenpapa/skeletor
+license: CC BY 4.0
+keywords:
+  - template
+  - open source
+  - GitHub
+abstract: >
+  Skeletor is an open-source project template designed to provide a robust starting point for new projects. It includes best practices for project structure, documentation, and configuration, making it easier to start new projects with a solid foundation.
