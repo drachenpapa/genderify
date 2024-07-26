@@ -24,13 +24,13 @@ Please report any unacceptable behavior to [@drachenpapa](https://github.com/dra
 ## <a name="issues-and-bugs"></a> Found a Bug?
 
 If you find a bug in the source code, you can help us by [submitting an issue](#submit-issue)
-to our [GitHub Repository](https://github.com/drachenpapa/skeletor/issues).
+to our [GitHub Repository](https://github.com/drachenpapa/genderify/issues).
 Even better, you can [submit a Pull Request](#submit-pr) with a fix.
 
 ## <a name="feature-requests"></a> Missing a Feature?
 
 If you have an idea for a new feature, we'd love to hear it!
-Please [submit an issue](https://github.com/drachenpapa/skeletor/issues/new/choose) with details
+Please [submit an issue](https://github.com/drachenpapa/genderify/issues/new/choose) with details
 about the feature and how it would benefit the project.
 
 ## <a name="submission-guidelines"></a> Submission Guidelines
@@ -51,7 +51,7 @@ as well as confirm that we are fixing the right problem.
 Unfortunately, we are not able to investigate or fix bugs without a minimal reproduction,
 so if we don't hear back from you, we are going to close an issue that doesn't have enough info to be reproduced.
 
-You can file new issues by selecting from our [new issue templates](https://github.com/drachenpapa/skeletor/issues/new/choose)
+You can file new issues by selecting from our [new issue templates](https://github.com/drachenpapa/genderify/issues/new/choose)
 and filling out the issue template.
 
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
@@ -73,7 +73,7 @@ and filling out the issue template.
 A good commit message serves at least three important purposes:
 - To speed up the reviewing process.
 - To help us write a good release note.
-- To help the future maintainers of Skeletor (it could be you!), say five years into the future,
+- To help the future maintainers of Genderify (it could be you!), say five years into the future,
    to find out why a particular change was made to the code or why a specific feature was added.
 
 Each commit message consists of a **header** and a **body**.

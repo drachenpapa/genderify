@@ -1,0 +1,90 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Log files
+*.log
+logs/
+
+# IDE-specific files
+## IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+## Eclipse
+.project
+.classpath
+.settings/
+.metadata/
+localhistory/
+bin/
+tmp/
+recommenders/
+
+## VS Code
+.vscode/
+
+# OS-specific files
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon\r
+._*
+
+## Linux
+*~
+.nfs*
+.Trash-*/
+
+# Build tools
+## Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+## Gradle
+.gradle/
+build/
+
+## Office Add-in build output
+dist/
+build/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+.node_repl_history
+*.tgz
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Miscellaneous
+## BlueJ
+.ctxt
+
+## Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+## Other
+bin/
+*.swp

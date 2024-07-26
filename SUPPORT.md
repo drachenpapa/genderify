@@ -32,7 +32,7 @@ Spending the extra time upfront can help save everyone time in the long run.
 
 ## How to Report a Bug or Request an Enhancement
 
-This project manages bugs and enhancements using the [GitHub issue tracker](https://github.com/drachenpapa/skeletor/issues/).
+This project manages bugs and enhancements using the [GitHub issue tracker](https://github.com/drachenpapa/genderify/issues/).
 The issue templates will guide you on making an effective report.
 
 ## How to Report a Security Vulnerability
