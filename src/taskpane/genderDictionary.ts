@@ -1,5 +1,3 @@
-// genderDictionary.ts
-
 export const genderDictionary: { [key: string]: string[] } = {
     "Abbrecherquote": ["", "Abbruchquote"],
     "Ableser": ["", "Ablesedienst"],

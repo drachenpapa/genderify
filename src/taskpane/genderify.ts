@@ -1,5 +1,3 @@
-// taskpane.ts
-
 // import { genderDictionary } from './genderDictionary';
 
 async function run() {
