@@ -1,6 +1,10 @@
-export const genderDictionary: { [key: string]: string[] } = {
-    "Abbrecherquote": ["", "Abbruchquote"],
-    "Ableser": ["", "Ablesedienst"],
-    "Akademiker": ["Akademiker", "Studierte"],
-    // "\u00C4rzte": ["\u00C4rzt", "Mediziner"],
+const genderDictionary: Record<string, string[]> = {
+    "Abbrecherquote": ["Abbruchquote", ""],
+    "Ableser": ["Ablesedienst", ""],
+    "Absenderadresse": ["Absendeadresse", ""],
+    "Absolventen": ["Alumni", "Absolvent"],
+    "Abteilungsleiter": ["Abteilungsleitung", ""],
+    "Akademiker": ["Studierte", "Akademiker"],
 };
+
+export default genderDictionary;

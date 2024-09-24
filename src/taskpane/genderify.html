@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="utf-8" />
-    <title>Genderify</title>
-    <link rel="stylesheet" href="genderify.css" />
-    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-    <script src="../../lib/src/taskpane/genderify.js" type="module"></script>
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Genderify</title>
+        <link rel="stylesheet" href="genderify.css" />
+        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+        <script src="../../lib/src/taskpane/genderify.js" type="module"></script>
+    </head>
 
-<body>
-<h1>Genderify</h1>
+    <body>
+        <h1>Genderify</h1>
 
-<div class="input-container">
-    <label for="genderChar">Genderzeichen:</label>
-    <input type="text" id="genderChar" value="*" maxlength="1" />
-</div>
+        <div class="input-container">
+            <label for="genderChar">Genderzeichen:</label>
+            <input type="text" id="genderChar" value="*" maxlength="1" />
+        </div>
 
-<button id="genderify-button">Genderify</button>
+        <button id="genderify-button">🔍 Überprüfen</button>
 
-<div class="output-container" id="output" style="display:none;">
-    <h2>Auswahlmöglichkeiten</h2>
+        <div class="selection-container" id="selection" style="display:none;">
+            <h2>Auswahlmöglichkeiten</h2>
 
-    <div class="variant-container" id="alternativeVariantContainer">
-        <label for="alternativeWord">Alternatives Wort:</label>
-        <input type="text" id="alternativeWord" readonly />
-        <button id="applyAlternative">Apply</button>
-    </div>
+            <div class="variant-container" id="alternativeVariantContainer">
+                <label for="alternativeWord">Alternative:</label>
+                <input type="text" id="alternativeWord" readonly />
+                <button id="applyAlternative" class="action-button">✔️ Anwenden</button>
+            </div>
 
-    <div class="variant-container" id="genderedVariantContainer">
-        <label for="genderedWord">Wort mit Genderzeichen:</label>
-        <input type="text" id="genderedWord" readonly />
-        <button id="applyGendered">Apply</button>
-    </div>
+            <div class="variant-container" id="genderedVariantContainer">
+                <label for="genderedWord">Gegendert:</label>
+                <input type="text" id="genderedWord" readonly />
+                <button id="applyGendered" class="action-button">✨ Anwenden</button>
+            </div>
 
-    <button id="prev-button">Vorheriges</button>
-    <button id="next-button">Nächstes</button>
-</div>
-</body>
+            <div class="navigation-buttons">
+                <button id="prev-button">⬅️ Vorheriges</button>
+                <button id="next-button">➡️ Nächstes</button>
+            </div>
+        </div>
+    </body>
 </html>

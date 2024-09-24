@@ -1,156 +1,138 @@
-const genderDictionary: { [key: string]: string[] } = {
+const genderDictionary: Record<string, string[]> = {
   "Abbrecherquote": ["Abbruchquote", ""],
   "Ableser": ["Ablesedienst", ""],
+  "Absenderadresse": ["Absendeadresse", ""],
+  "Absolventen": ["Alumni", "Absolvent"],
+  "Abteilungsleiter": ["Abteilungsleitung", ""],
   "Akademiker": ["Studierte", "Akademiker"],
-  // Füge hier weitere Wörter hinzu
 };
 
-let highlightedWords: { word: string; index: number }[] = [];
+let findings: { word: string; index: number }[] = [];
 let currentIndex = 0;
 
 async function run() {
-  await new Promise((resolve) => {
-    document.addEventListener("DOMContentLoaded", resolve);
-  });
+  await waitForDOM();
+  setupEventListeners();
+}
 
-  document.getElementById("genderify-button")?.addEventListener("click", genderifyText);
-  document.getElementById("applyAlternative")?.addEventListener("click", applyAlternative);
-  document.getElementById("applyGendered")?.addEventListener("click", applyGendered);
-  document.getElementById("prev-button")?.addEventListener("click", previousWord);
-  document.getElementById("next-button")?.addEventListener("click", nextWord);
-  console.log("Run function initialized and event listeners set.");
+function waitForDOM(): Promise<void> {
+  return new Promise<void>((resolve) => {
+    document.addEventListener("DOMContentLoaded", () => {
+      resolve();
+    });
+  });
+}
+
+function setupEventListeners() {
+  const eventListeners = [
+    { id: "genderify-button", handler: genderifyText },
+    { id: "applyAlternative", handler: () => applyWord("alternativeWord") },
+    { id: "applyGendered", handler: () => applyWord("genderedWord") },
+    { id: "prev-button", handler: previousWord },
+    { id: "next-button", handler: nextWord }
+  ];
+
+  eventListeners.forEach(({ id, handler }) => {
+    document.getElementById(id)?.addEventListener("click", handler);
+  });
 }
 
 function genderifyText() {
-  console.log("Genderify button clicked.");
   Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, (result) => {
     if (result.status === Office.AsyncResultStatus.Succeeded) {
-      const selectedText = result.value as string;
-      console.log("Selected text:", selectedText);
-      highlightWords(selectedText);
+      scanText(result.value as string);
     } else {
-      console.error("Failed to get selected text: " + result.error.message);
+      alert("Fehler beim Abrufen des ausgewählten Textes.");
     }
   });
 }
 
-function highlightWords(text: string) {
-  console.log("Highlighting words in the text:", text);
-  const words = text.split(/\s+/);
-  highlightedWords = [];
-
-  words.forEach((word, index) => {
+function scanText(text: string) {
+  findings = text.split(/\s+/).reduce((acc, word, index) => {
     const cleanWord = word.replace(/[.,;:!?()]/g, "");
     if (genderDictionary[cleanWord]) {
-      highlightedWords.push({ word: cleanWord, index });
-      console.log("Highlighted word found:", cleanWord);
+      acc.push({ word: cleanWord, index });
     }
-  });
+    return acc;
+  }, [] as { word: string; index: number }[]);
 
-  if (highlightedWords.length > 0) {
+  if (findings.length > 0) {
     currentIndex = 0;
-    console.log("Highlighted words:", highlightedWords);
-    updateOutput();
-    document.getElementById("output").style.display = "block";
+    updateSelectionMenu();
+    document.getElementById("selection").style.display = "block";
   } else {
-    console.log("No matching words found.");
     alert("Keine passenden Wörter gefunden.");
   }
 }
 
-function updateOutput() {
-  const { word } = highlightedWords[currentIndex];
-
+function updateSelectionMenu() {
+  const { word } = findings[currentIndex];
   const alternativeWordInput = document.getElementById("alternativeWord") as HTMLInputElement;
   const genderedWordInput = document.getElementById("genderedWord") as HTMLInputElement;
   const genderCharInput = document.getElementById("genderChar") as HTMLInputElement;
+  const applyGenderedButton = document.getElementById("applyGendered") as HTMLButtonElement;
 
   alternativeWordInput.value = genderDictionary[word][0];
-  console.log("Alternative word set to:", alternativeWordInput.value);
-
   const genderedVariant = genderDictionary[word][1];
+
   if (genderedVariant) {
     genderedWordInput.value = `${genderedVariant}${genderCharInput.value}innen`;
-    console.log("Gendered word set to:", genderedWordInput.value);
-    document.getElementById("genderedVariantContainer").style.display = "flex";
+    applyGenderedButton.disabled = false;
   } else {
     genderedWordInput.value = '';
-    console.log("No gendered variant available for:", word);
-    document.getElementById("genderedVariantContainer").style.display = "none";
+    applyGenderedButton.disabled = true;
   }
+  document.getElementById("genderedVariantContainer").style.display = "flex";
 }
 
-function applyAlternative() {
-  const alternativeWordInput = document.getElementById("alternativeWord") as HTMLInputElement;
-  const selectedWord = alternativeWordInput.value;
-  console.log("Applying alternative word:", selectedWord);
-  replaceWordInDocument(selectedWord);
-  removeWordFromList();
+function applyWord(inputId: string) {
+  const wordInput = document.getElementById(inputId) as HTMLInputElement;
+  rewriteDocument(wordInput.value);
+  removeFromFindings();
 }
 
-function applyGendered() {
-  const genderedWordInput = document.getElementById("genderedWord") as HTMLInputElement;
-  const selectedWord = genderedWordInput.value;
-  console.log("Applying gendered word:", selectedWord);
-  replaceWordInDocument(selectedWord);
-  removeWordFromList();
-}
-
-function replaceWordInDocument(replacementWord: string) {
-  const wordToReplace = highlightedWords[currentIndex].word;
+function rewriteDocument(replacementWord: string) {
+  const wordToReplace = findings[currentIndex].word;
   Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, (result) => {
     if (result.status === Office.AsyncResultStatus.Succeeded) {
-      const selectedText = result.value as string;
-      const regex = new RegExp(wordToReplace, 'gi');
-      const updatedText = selectedText.replace(regex, replacementWord);
-      console.log("Replacing word:", wordToReplace, "with:", replacementWord);
+      const updatedText = (result.value as string).replace(new RegExp(`\\b${wordToReplace}\\b`, 'gi'), replacementWord);
       Office.context.document.setSelectedDataAsync(updatedText, (asyncResult) => {
-        if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-          console.log("Word successfully replaced.");
-        } else {
-          console.error("Failed to replace word: " + asyncResult.error.message);
+        if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+          alert("Fehler beim Ersetzen des Wortes.");
         }
       });
     } else {
-      console.error("Failed to get selected text: " + result.error.message);
+      alert("Fehler beim Abrufen des ausgewählten Textes.");
     }
   });
 }
 
-function removeWordFromList() {
-  highlightedWords.splice(currentIndex, 1);
-
-  if (highlightedWords.length === 0) {
-    document.getElementById("output").style.display = "none";
-    console.log("No more words to replace.");
+function removeFromFindings() {
+  findings.splice(currentIndex, 1);
+  if (findings.length === 0) {
+    document.getElementById("selection").style.display = "none";
   } else {
-    if (currentIndex >= highlightedWords.length) {
-      currentIndex = highlightedWords.length - 1;
-    }
-    console.log("Remaining highlighted words:", highlightedWords);
-    updateOutput();
+    currentIndex = Math.min(currentIndex, findings.length - 1);
+    updateSelectionMenu();
   }
 }
 
 function previousWord() {
   if (currentIndex > 0) {
     currentIndex--;
-    console.log("Navigating to previous word. Current index:", currentIndex);
-    updateOutput();
+    updateSelectionMenu();
   }
 }
 
 function nextWord() {
-  if (currentIndex < highlightedWords.length - 1) {
+  if (currentIndex < findings.length - 1) {
     currentIndex++;
-    console.log("Navigating to next word. Current index:", currentIndex);
-    updateOutput();
+    updateSelectionMenu();
   }
 }
 
 Office.onReady((info) => {
   if (info.host === Office.HostType.Word) {
     run();
-    console.log("Office Add-in ready.");
   }
 });

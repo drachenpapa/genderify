@@ -12,7 +12,7 @@ h1 {
 }
 
 .input-container,
-.output-container {
+.selection-container {
     margin: 20px;
     text-align: center;
 }
@@ -31,9 +31,11 @@ label {
 
 input {
     padding: 5px;
-    width: auto;
+    width: 100%;
     max-width: 200px;
     margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
@@ -43,7 +45,14 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
+
+button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+        color: #666666;
+    }
 
 button:hover {
     background-color: #005a9e;
@@ -51,4 +60,14 @@ button:hover {
 
 #prev-button, #next-button {
     margin-top: 20px;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-button {
+    min-width: 100px;
 }
