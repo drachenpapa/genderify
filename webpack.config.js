@@ -14,11 +14,12 @@ async function getHttpsOptions() {
 
 module.exports = async (env, options) => {
   const dev = options.mode === "development";
-  const config = {
+
+  return {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      taskpane: ["./src/taskpane/taskpane.ts", "./src/taskpane/taskpane.html"],
+      taskpane: "./src/taskpane/taskpane.ts",
       commands: "./src/commands/commands.ts",
     },
     output: {
@@ -67,13 +68,9 @@ module.exports = async (env, options) => {
           },
           {
             from: "manifest*.xml",
-            to: "[name]" + "[ext]",
+            to: "[name][ext]",
             transform(content) {
-              if (dev) {
-                return content;
-              } else {
-                return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
-              }
+              return dev ? content : content.toString().replace(new RegExp(urlDev, "g"), urlProd);
             },
           },
         ],
@@ -95,6 +92,4 @@ module.exports = async (env, options) => {
       port: process.env.npm_package_config_dev_server_port || 3000,
     },
   };
-
-  return config;
 };
