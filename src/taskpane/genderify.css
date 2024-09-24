@@ -1,10 +1,9 @@
-/* Minimierte CSS für Genderify */
-
 html, body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 h1 {
@@ -12,27 +11,44 @@ h1 {
     margin: 20px 0;
 }
 
-label {
-    display: block;
+.input-container,
+.output-container {
+    margin: 20px;
+    text-align: center;
+}
+
+.variant-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 10px;
+}
+
+label {
+    margin-right: 10px;
     font-weight: bold;
 }
 
 input {
-    margin-bottom: 20px;
     padding: 5px;
-    width: 100%;
-    max-width: 300px;
+    width: auto;
+    max-width: 200px;
+    margin-right: 10px;
 }
 
 button {
-    padding: 10px 20px;
+    padding: 10px 15px;
     background-color: #0078d7;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 button:hover {
     background-color: #005a9e;
+}
+
+#prev-button, #next-button {
+    margin-top: 20px;
 }

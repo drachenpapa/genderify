@@ -1,17 +1,40 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Genderify</title>
-        <link rel="stylesheet" href="genderify.css" />
-        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-        <script src="../../lib/src/taskpane/genderify.js" type="module"></script>
-    </head>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <title>Genderify</title>
+    <link rel="stylesheet" href="genderify.css" />
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script src="../../lib/src/taskpane/genderify.js" type="module"></script>
+</head>
 
-    <body>
-        <h1>Genderify</h1>
-        <label for="genderChar">Genderzeichen:</label>
-        <input type="text" id="genderChar" value="*" />
-        <button id="genderify-button">Genderify</button>
-    </body>
+<body>
+<h1>Genderify</h1>
+
+<div class="input-container">
+    <label for="genderChar">Genderzeichen:</label>
+    <input type="text" id="genderChar" value="*" maxlength="1" />
+</div>
+
+<button id="genderify-button">Genderify</button>
+
+<div class="output-container" id="output" style="display:none;">
+    <h2>Auswahlmöglichkeiten</h2>
+
+    <div class="variant-container" id="alternativeVariantContainer">
+        <label for="alternativeWord">Alternatives Wort:</label>
+        <input type="text" id="alternativeWord" readonly />
+        <button id="applyAlternative">Apply</button>
+    </div>
+
+    <div class="variant-container" id="genderedVariantContainer">
+        <label for="genderedWord">Wort mit Genderzeichen:</label>
+        <input type="text" id="genderedWord" readonly />
+        <button id="applyGendered">Apply</button>
+    </div>
+
+    <button id="prev-button">Vorheriges</button>
+    <button id="next-button">Nächstes</button>
+</div>
+</body>
 </html>
