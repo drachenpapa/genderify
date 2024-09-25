@@ -75,7 +75,7 @@
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Das Genderify Add-in wurde erfolgreich geladen. Gehe zum 'Home'-Tab und klicke auf 'Genderify' um loszulegen."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Klicke, um das Genderify-Taskpane zu öffnen"/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Hier klicken, um gendergerechte Alternativen zu erhalten."/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
