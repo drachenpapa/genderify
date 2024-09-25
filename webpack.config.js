@@ -21,6 +21,7 @@ module.exports = async (env, options) => {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: "./src/taskpane/genderify.ts",
       commands: "./src/commands/commands.ts",
+      // dictionary: "./src/taskpane/dictionary.ts",
     },
     output: {
       clean: true,

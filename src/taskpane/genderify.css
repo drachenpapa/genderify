@@ -11,17 +11,21 @@ h1 {
     margin: 20px 0;
 }
 
-.input-container,
-.selection-container {
+.finding-container {
     margin: 20px;
     text-align: center;
 }
 
+.genderchar-container,
 .variant-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+}
+.genderchar-input {
+    width: 6px;
+    margin-right: 10px;
 }
 
 label {
@@ -49,10 +53,10 @@ button {
 }
 
 button:disabled {
-        background-color: #cccccc;
-        cursor: not-allowed;
-        color: #666666;
-    }
+    background-color: #cccccc;
+    cursor: not-allowed;
+    color: #666666;
+}
 
 button:hover {
     background-color: #005a9e;
@@ -68,6 +72,8 @@ button:hover {
     gap: 10px;
 }
 
-.action-button {
-    min-width: 100px;
+.analysis-container {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
 }

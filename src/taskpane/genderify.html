@@ -12,31 +12,38 @@
     <body>
         <h1>Genderify</h1>
 
-        <div class="input-container">
+        <div class="genderchar-container">
             <label for="genderChar">Genderzeichen:</label>
-            <input type="text" id="genderChar" value="*" maxlength="1" />
+            <input type="text" class="genderchar-input" id="genderChar" value="*" maxlength="1" />
         </div>
 
-        <button id="genderify-button">🔍 Überprüfen</button>
+        <div class="analysis-container">
+            <button class="analyze-button" id="analyze-button">🔍 Überprüfen</button>
+        </div>
 
-        <div class="selection-container" id="selection" style="display:none;">
-            <h2>Auswahlmöglichkeiten</h2>
+        <hr />
+
+        <div class="finding-container" id="selection">
+            <div class="variant-container" id="foundWordContainer">
+                <label for="foundWord">Gefunden:</label>
+                <input type="text" id="foundWord" readonly />
+            </div>
 
             <div class="variant-container" id="alternativeVariantContainer">
                 <label for="alternativeWord">Alternative:</label>
                 <input type="text" id="alternativeWord" readonly />
-                <button id="applyAlternative" class="action-button">✔️ Anwenden</button>
+                <button id="applyAlternative" class="action-button" disabled>✔️</button>
             </div>
 
             <div class="variant-container" id="genderedVariantContainer">
                 <label for="genderedWord">Gegendert:</label>
                 <input type="text" id="genderedWord" readonly />
-                <button id="applyGendered" class="action-button">✨ Anwenden</button>
+                <button id="applyGendered" class="action-button" disabled>✔️</button>
             </div>
 
             <div class="navigation-buttons">
-                <button id="prev-button">⬅️ Vorheriges</button>
-                <button id="next-button">➡️ Nächstes</button>
+                <button id="prev-button" disabled>⬅️ Vorheriges</button>
+                <button id="next-button" disabled>➡️ Nächstes</button>
             </div>
         </div>
     </body>

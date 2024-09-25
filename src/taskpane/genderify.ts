@@ -25,7 +25,7 @@ function waitForDOM(): Promise<void> {
 
 function setupEventListeners() {
   const eventListeners = [
-    { id: "genderify-button", handler: genderifyText },
+    { id: "analyze-button", handler: genderifyText },
     { id: "applyAlternative", handler: () => applyWord("alternativeWord") },
     { id: "applyGendered", handler: () => applyWord("genderedWord") },
     { id: "prev-button", handler: previousWord },
@@ -67,13 +67,31 @@ function scanText(text: string) {
 
 function updateSelectionMenu() {
   const { word } = findings[currentIndex];
+  const genderCharInput = document.getElementById("genderChar") as HTMLInputElement;
+  const foundWordInput = document.getElementById("foundWord") as HTMLInputElement;
   const alternativeWordInput = document.getElementById("alternativeWord") as HTMLInputElement;
   const genderedWordInput = document.getElementById("genderedWord") as HTMLInputElement;
-  const genderCharInput = document.getElementById("genderChar") as HTMLInputElement;
+  const applyAlternativeButton = document.getElementById("applyAlternative") as HTMLButtonElement;
   const applyGenderedButton = document.getElementById("applyGendered") as HTMLButtonElement;
+  const prevButton = document.getElementById("prev-button") as HTMLButtonElement;
+  const nextButton = document.getElementById("next-button") as HTMLButtonElement;
 
+  foundWordInput.value = word;
   alternativeWordInput.value = genderDictionary[word][0];
   const genderedVariant = genderDictionary[word][1];
+
+  applyAlternativeButton.disabled = false;
+
+  if (currentIndex === 0) {
+    prevButton.disabled = true;
+    nextButton.disabled = false;
+  } else if (currentIndex === findings.length - 1) {
+    prevButton.disabled = false;
+    nextButton.disabled = true;
+  } else {
+    prevButton.disabled = false;
+    nextButton.disabled = false;
+  }
 
   if (genderedVariant) {
     genderedWordInput.value = `${genderedVariant}${genderCharInput.value}innen`;
@@ -82,7 +100,6 @@ function updateSelectionMenu() {
     genderedWordInput.value = '';
     applyGenderedButton.disabled = true;
   }
-  document.getElementById("genderedVariantContainer").style.display = "flex";
 }
 
 function applyWord(inputId: string) {
@@ -110,7 +127,6 @@ function rewriteDocument(replacementWord: string) {
 function removeFromFindings() {
   findings.splice(currentIndex, 1);
   if (findings.length === 0) {
-    document.getElementById("selection").style.display = "none";
   } else {
     currentIndex = Math.min(currentIndex, findings.length - 1);
     updateSelectionMenu();
