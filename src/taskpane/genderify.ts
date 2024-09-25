@@ -78,51 +78,46 @@ function updateSelectionMenu() {
 
   foundWordInput.value = word;
   alternativeWordInput.value = genderDictionary[word][0];
+
   const genderedVariant = genderDictionary[word][1];
+  const hasGenderedVariant = !!genderedVariant;
 
   applyAlternativeButton.disabled = false;
+  prevButton.disabled = currentIndex === 0;
+  nextButton.disabled = currentIndex === findings.length - 1;
 
-  if (currentIndex === 0) {
-    prevButton.disabled = true;
-    nextButton.disabled = false;
-  } else if (currentIndex === findings.length - 1) {
-    prevButton.disabled = false;
-    nextButton.disabled = true;
-  } else {
-    prevButton.disabled = false;
-    nextButton.disabled = false;
-  }
-
-  if (genderedVariant) {
+  if (hasGenderedVariant) {
     genderedWordInput.value = `${genderedVariant}${genderCharInput.value}innen`;
-    applyGenderedButton.disabled = false;
   } else {
-    genderedWordInput.value = '';
-    applyGenderedButton.disabled = true;
+    genderedWordInput.value = "";
   }
+  applyGenderedButton.disabled = !hasGenderedVariant;
 }
 
 function applyWord(inputId: string) {
   const wordInput = document.getElementById(inputId) as HTMLInputElement;
+  if (!wordInput.value) return;
   rewriteDocument(wordInput.value);
   removeFromFindings();
 }
 
 function rewriteDocument(replacementWord: string) {
   const wordToReplace = findings[currentIndex].word;
+
   Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, (result) => {
-    if (result.status === Office.AsyncResultStatus.Succeeded) {
-      const updatedText = (result.value as string).replace(new RegExp(`\\b${wordToReplace}\\b`, 'gi'), replacementWord);
-      Office.context.document.setSelectedDataAsync(updatedText, (asyncResult) => {
-        if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          alert("Fehler beim Ersetzen des Wortes.");
-        }
-      });
-    } else {
-      alert("Fehler beim Abrufen des ausgewählten Textes.");
-    }
+    if (!isAsyncSucceeded(result)) return;
+
+    const updatedText = (result.value as string).replace(new RegExp(`\\b${wordToReplace}\\b`, "gi"), replacementWord);
+    Office.context.document.setSelectedDataAsync(updatedText, (asyncResult) => {
+      if (!isAsyncSucceeded(asyncResult)) alert("Fehler beim Ersetzen des Wortes.");
+    });
   });
 }
+
+function isAsyncSucceeded(result: Office.AsyncResult<any>) {
+  return result.status === Office.AsyncResultStatus.Succeeded;
+}
+
 
 function removeFromFindings() {
   findings.splice(currentIndex, 1);
