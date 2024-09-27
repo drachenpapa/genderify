@@ -1,4 +1,4 @@
-export const genderDictionary: Record<string, string[]> = {
+export const GenderDictionary: Record<string, string[]> = {
     "Abbrecherquote": ["Abbruchquote", ""],
     "Ableser": ["Ablesedienst", ""],
     "Absenderadresse": ["Absendeadresse", ""],

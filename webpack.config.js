@@ -21,7 +21,6 @@ module.exports = async (env, options) => {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: "./src/taskpane/genderify.ts",
       commands: "./src/commands/commands.ts",
-      // dictionary: "./src/taskpane/dictionary.ts",
     },
     output: {
       clean: true,
@@ -91,6 +90,7 @@ module.exports = async (env, options) => {
         options: env.WEBPACK_BUILD || options.https !== undefined ? options.https : await getHttpsOptions(),
       },
       port: process.env.npm_package_config_dev_server_port || 3000,
+      hot: true,
     },
   };
 };
