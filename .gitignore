@@ -8,17 +8,14 @@ yarn-error.log*
 *.tsbuildinfo
 
 # Logs
-logs
+logs/
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Dependency directories
 node_modules/
 
 # Optional npm cache directory
-.npm
+.npm/
 
 # Optional eslint cache
 .eslintcache
@@ -36,6 +33,9 @@ coverage/
 dist/
 build/
 lib/
+
+# IDE specific files
+.idea/
 
 # VS Code settings
 .vscode/
