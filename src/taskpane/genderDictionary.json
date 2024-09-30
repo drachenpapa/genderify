@@ -3,9 +3,45 @@
     "genderForm": "",
     "genderNeutralWords": ["Abbruchquote"]
   },
+  "Abenteurer": {
+    "genderForm": "",
+    "genderNeutralWords": ["Waghals", "abenteuerliebende Person", "abenteuerlustige Person", "abenteuermutige Person", "Abenteuermensch"]
+  },
+  "Abgänger": {
+    "genderForm": "",
+    "genderNeutralWords": ["absolvierende Person", "Abschluss innehabende Person"]
+  },
+  "Abgeordneter": {
+    "genderForm": "",
+    "genderNeutralWords": ["abgeordnete Person für"]
+  },
+  "Abiturient": {
+    "genderForm": "",
+    "genderNeutralWords": ["Abitur ablegende Person", "Person, die Abitur macht"]
+  },
+  "Abkömmling": {
+    "genderForm": "",
+    "genderNeutralWords": ["abstammende Person", "nachkommende Person", "Kind", "Kindeskind", "Person gleicher Abstammung"]
+  },
   "Ableser": {
-    "genderForm": "Ableser",
+    "genderForm": "",
     "genderNeutralWords": ["Ablesedienst"]
+  },
+  "Abnehmer": {
+    "genderForm": "",
+    "genderNeutralWords": ["Abnehmende"]
+  },
+  "Abonnent": {
+    "genderForm": "",
+    "genderNeutralWords": ["Bezugsperson", "medienbeziehende Person", "ein Abonnement beziehende Person"]
+  },
+  "Abonnenten": {
+    "genderForm": "",
+    "genderNeutralWords": ["Abonnement-Beziehende", "Abonnierende"]
+  },
+  "Absender": {
+    "genderForm": "",
+    "genderNeutralWords": ["absendende Person", "abgesandt durch"]
   },
   "Absenderadresse": {
     "genderForm": "",
@@ -15,12 +51,68 @@
     "genderForm": "Absolvent",
     "genderNeutralWords": ["Alumni", "Abschluss innehabende Person", "Person mit Abschluss"]
   },
+  "Absolventenpraktikum": {
+    "genderForm": "",
+    "genderNeutralWords": ["Praktikum nach Studienabschluss"]
+  },
+  "Absolventenvorsprechen": {
+    "genderForm": "",
+    "genderNeutralWords": ["Abschlussvorsprechen", "Alumnivorsprechen"]
+  },
   "Abteilungsleiter": {
     "genderForm": "Abteilungsleiter",
     "genderNeutralWords": ["Abteilungsleitung"]
   },
+  "Abteilungsleitertreffen": {
+    "genderForm": "",
+    "genderNeutralWords": ["Treffen der Abteilungsleitungen", "Treffen der Leitungsebene"]
+  },
+  "Administrator": {
+    "genderForm": "",
+    "genderNeutralWords": ["Administration", "Admin"]
+  },
+  "Administratoren": {
+    "genderForm": "",
+    "genderNeutralWords": ["Administration", "Admins", "Administrierende"]
+  },
+  "Adressat": {
+    "genderForm": "",
+    "genderNeutralWords": ["adressierte Person"]
+  },
+  "adressatengerecht": {
+    "genderForm": "",
+    "genderNeutralWords": ["zielgruppengerecht"]
+  },
+  "Adressatenkreis": {
+    "genderForm": "",
+    "genderNeutralWords": ["Zielgruppe"]
+  },
+  "Agent": {
+    "genderForm": "",
+    "genderNeutralWords": ["auskundschaftende Person", "spionierende Person", "jemanden vermittelnde Person", "etwas vermittelnde Person"]
+  },
+  "Agentenfilm": {
+    "genderForm": "",
+    "genderNeutralWords": ["Spionagefilm"]
+  },
+  "Agententhriller": {
+    "genderForm": "",
+    "genderNeutralWords": ["Spionagethriller"]
+  },
   "Akademiker": {
-    "genderForm": "Akademiker",
-    "genderNeutralWords": ["Studierte"]
+    "genderForm": "",
+    "genderNeutralWords": ["Studierte", "Personen mit Hochschulabschluss"]
+  },
+  "Akteure": {
+    "genderForm": "",
+    "genderNeutralWords": ["Beteiligte", "Agierende", "Handelnde", "Aktive"]
+  },
+  "Akteursnetzwerk": {
+    "genderForm": "",
+    "genderNeutralWords": ["Netzwerk von Engagierten", "Netzwerk von Aktiven"]
+  },
+  "Aktionär": {
+    "genderForm": "",
+    "genderNeutralWords": ["Person mit Aktieneigentum"]
   }
 }

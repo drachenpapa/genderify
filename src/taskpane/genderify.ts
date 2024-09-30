@@ -142,15 +142,11 @@ async function replaceWordInDocument(inputId: string) {
   const wordInput = document.getElementById(inputId) as HTMLInputElement;
   if (!wordInput.value) return;
 
-  toggleButtons(true);
-
   try {
     await rewriteDocument(wordInput.value);
     removeFromFindings();
   } catch (error) {
     alert(`Fehler beim Ersetzen des Wortes: ${error.message}`);
-  } finally {
-    toggleButtons(false);
   }
 }
 
