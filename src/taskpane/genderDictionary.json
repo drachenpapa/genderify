@@ -1,0 +1,26 @@
+{
+  "Abbrecherquote": {
+    "genderForm": "",
+    "genderNeutralWords": ["Abbruchquote"]
+  },
+  "Ableser": {
+    "genderForm": "Ableser",
+    "genderNeutralWords": ["Ablesedienst"]
+  },
+  "Absenderadresse": {
+    "genderForm": "",
+    "genderNeutralWords": ["Absendeadresse"]
+  },
+  "Absolventen": {
+    "genderForm": "Absolvent",
+    "genderNeutralWords": ["Alumni", "Abschluss innehabende Person", "Person mit Abschluss"]
+  },
+  "Abteilungsleiter": {
+    "genderForm": "Abteilungsleiter",
+    "genderNeutralWords": ["Abteilungsleitung"]
+  },
+  "Akademiker": {
+    "genderForm": "Akademiker",
+    "genderNeutralWords": ["Studierte"]
+  }
+}

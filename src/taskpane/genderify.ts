@@ -1,5 +1,5 @@
 import { ButtonIds, InputIds } from "./enums";
-import { GenderDictionary } from "./genderDictionary";
+import GenderDictionary from './genderDictionary.json';
 
 interface Finding {
   word: string;
@@ -9,15 +9,17 @@ interface Finding {
 let findings: Finding[] = [];
 let currentIndex = 0;
 
-let applyAlternativeButton: HTMLButtonElement;
+let applyGenderNeutralButton: HTMLButtonElement;
 let applyGenderedButton: HTMLButtonElement;
 let prevButton: HTMLButtonElement;
 let nextButton: HTMLButtonElement;
 
 let genderCharInput: HTMLInputElement;
 let foundWordInput: HTMLInputElement;
-let alternativeWordInput: HTMLInputElement;
+let genderNeutralWordInput: HTMLInputElement;
 let genderedWordInput: HTMLInputElement;
+
+let genderNeutralWordSelect: HTMLSelectElement;
 
 /**
  * Main function that runs when the Office app is ready.
@@ -31,15 +33,17 @@ async function setup() {
  * Sets up HTML elements by assigning them to global variables.
  */
 function setupHtmlElements() {
-  applyAlternativeButton = document.getElementById(ButtonIds.ApplyAlternative) as HTMLButtonElement;
+  applyGenderNeutralButton = document.getElementById(ButtonIds.ApplyGenderNeutral) as HTMLButtonElement;
   applyGenderedButton = document.getElementById(ButtonIds.ApplyGendered) as HTMLButtonElement;
   prevButton = document.getElementById(ButtonIds.PrevButton) as HTMLButtonElement;
   nextButton = document.getElementById(ButtonIds.NextButton) as HTMLButtonElement;
 
   genderCharInput = document.getElementById(InputIds.GenderChar) as HTMLInputElement;
   foundWordInput = document.getElementById(InputIds.FoundWord) as HTMLInputElement;
-  alternativeWordInput = document.getElementById(InputIds.AlternativeWord) as HTMLInputElement;
+  genderNeutralWordInput = document.getElementById(InputIds.GenderNeutralWord) as HTMLInputElement;
   genderedWordInput = document.getElementById(InputIds.GenderedWord) as HTMLInputElement;
+
+  genderNeutralWordSelect = document.getElementById("genderNeutralWord") as HTMLSelectElement;
 }
 
 /**
@@ -48,7 +52,7 @@ function setupHtmlElements() {
  */
 function setupEventListeners() {
   document.getElementById(ButtonIds.AnalyzeButton)?.addEventListener("click", analyzeSelectedText);
-  document.getElementById(ButtonIds.ApplyAlternative)?.addEventListener("click", () => replaceWordInDocument("alternativeWord"));
+  document.getElementById(ButtonIds.ApplyGenderNeutral)?.addEventListener("click", () => replaceWordInDocument("genderNeutralWord"));
   document.getElementById(ButtonIds.ApplyGendered)?.addEventListener("click", () => replaceWordInDocument("genderedWord"));
   document.getElementById(ButtonIds.PrevButton)?.addEventListener("click", goToPreviousMatch);
   document.getElementById(ButtonIds.NextButton)?.addEventListener("click", goToNextMatch);
@@ -104,12 +108,23 @@ function scanText(text: string) {
 function updateSelectionMenu() {
   const { word } = findings[currentIndex];
   foundWordInput.value = word;
-  alternativeWordInput.value = GenderDictionary[word][0];
 
-  const genderedVariant = GenderDictionary[word][1];
+  genderNeutralWordInput.innerHTML = "";
+
+  const dictionaryEntry = GenderDictionary[word];
+
+  dictionaryEntry.genderNeutralWords.forEach((neutralWord: string) => {
+    const option = document.createElement("option");
+    option.value = neutralWord;
+    option.text = neutralWord;
+    genderNeutralWordInput.appendChild(option);
+  });
+
+  const genderedVariant = dictionaryEntry.genderForm;
   genderedWordInput.value = genderedVariant ? `${genderedVariant}${genderCharInput.value}innen` : "";
 
-  applyAlternativeButton.disabled = false;
+  applyGenderNeutralButton.disabled = false;
+  genderNeutralWordSelect.disabled = false;
   prevButton.disabled = currentIndex === 0;
   nextButton.disabled = currentIndex === findings.length - 1;
   applyGenderedButton.disabled = !genderedVariant;
@@ -219,7 +234,7 @@ function disableButtonsAndClearInputs() {
  * @param {boolean} disabled - Whether to disable or enable the buttons.
  */
 function toggleButtons(disabled: boolean) {
-  applyAlternativeButton.disabled = disabled;
+  applyGenderNeutralButton.disabled = disabled;
   applyGenderedButton.disabled = disabled || !genderedWordInput.value;
   prevButton.disabled = disabled || currentIndex === 0;
   nextButton.disabled = disabled || currentIndex === findings.length - 1;
@@ -231,7 +246,7 @@ function toggleButtons(disabled: boolean) {
  */
 function clearInputs() {
   foundWordInput.value = "";
-  alternativeWordInput.value = "";
+  genderNeutralWordInput.value = "";
   genderedWordInput.value = "";
 }
 

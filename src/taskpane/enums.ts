@@ -1,6 +1,6 @@
 export enum ButtonIds {
     AnalyzeButton = "analyze-button",
-    ApplyAlternative = "applyAlternative",
+    ApplyGenderNeutral = "applyGenderNeutral",
     ApplyGendered = "applyGendered",
     PrevButton = "prev-button",
     NextButton = "next-button",
@@ -9,6 +9,6 @@ export enum ButtonIds {
 export enum InputIds {
     GenderChar = "genderChar",
     FoundWord = "foundWord",
-    AlternativeWord = "alternativeWord",
+    GenderNeutralWord = "genderNeutralWord",
     GenderedWord = "genderedWord",
 }

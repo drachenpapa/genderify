@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "noEmitOnError": true,
     "outDir": "lib",
+    "resolveJsonModule": true,
     "sourceMap": true,
     "target": "es6",
     "lib": [
