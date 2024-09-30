@@ -8,6 +8,7 @@ interface Finding {
 
 let findings: Finding[] = [];
 let currentIndex = 0;
+let hostType: Office.HostType;
 
 let applyGenderNeutralButton: HTMLButtonElement;
 let applyGenderedButton: HTMLButtonElement;
@@ -16,13 +17,13 @@ let nextButton: HTMLButtonElement;
 
 let genderCharInput: HTMLInputElement;
 let foundWordInput: HTMLInputElement;
-let genderNeutralWordInput: HTMLInputElement;
 let genderedWordInput: HTMLInputElement;
 
 let genderNeutralWordSelect: HTMLSelectElement;
 
 /**
  * Main function that runs when the Office app is ready.
+ * It initializes the setup for HTML elements and event listeners.
  */
 async function setup() {
   setupHtmlElements();
@@ -31,6 +32,7 @@ async function setup() {
 
 /**
  * Sets up HTML elements by assigning them to global variables.
+ * This includes buttons, inputs, and select elements used in the UI.
  */
 function setupHtmlElements() {
   applyGenderNeutralButton = document.getElementById(ButtonIds.ApplyGenderNeutral) as HTMLButtonElement;
@@ -40,7 +42,6 @@ function setupHtmlElements() {
 
   genderCharInput = document.getElementById(InputIds.GenderChar) as HTMLInputElement;
   foundWordInput = document.getElementById(InputIds.FoundWord) as HTMLInputElement;
-  genderNeutralWordInput = document.getElementById(InputIds.GenderNeutralWord) as HTMLInputElement;
   genderedWordInput = document.getElementById(InputIds.GenderedWord) as HTMLInputElement;
 
   genderNeutralWordSelect = document.getElementById("genderNeutralWord") as HTMLSelectElement;
@@ -64,7 +65,7 @@ function setupEventListeners() {
  * to look for gender-specific words.
  */
 function analyzeSelectedText() {
-  Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, (result) => {
+  getSelectedData((result) => {
     if (result.status === Office.AsyncResultStatus.Succeeded) {
       scanText(result.value as string);
     } else {
@@ -77,6 +78,7 @@ function analyzeSelectedText() {
  * Scans the given text for words that are included in the gender dictionary
  * and stores the findings in the findings list.
  * The function uses a Set to avoid duplicate findings.
+ *
  * @param {string} text - The text to scan.
  */
 function scanText(text: string) {
@@ -109,7 +111,7 @@ function updateSelectionMenu() {
   const { word } = findings[currentIndex];
   foundWordInput.value = word;
 
-  genderNeutralWordInput.innerHTML = "";
+  genderNeutralWordSelect.innerHTML = "";
 
   const dictionaryEntry = GenderDictionary[word];
 
@@ -117,7 +119,7 @@ function updateSelectionMenu() {
     const option = document.createElement("option");
     option.value = neutralWord;
     option.text = neutralWord;
-    genderNeutralWordInput.appendChild(option);
+    genderNeutralWordSelect.appendChild(option);
   });
 
   const genderedVariant = dictionaryEntry.genderForm;
@@ -132,6 +134,7 @@ function updateSelectionMenu() {
 
 /**
  * Applies the selected word replacement in the document.
+ *
  * @param {string} inputId - The ID of the input field containing the replacement word.
  * This function handles the replacement and updates the findings list.
  */
@@ -153,13 +156,14 @@ async function replaceWordInDocument(inputId: string) {
 
 /**
  * Rewrites the document by replacing the current word with a new one.
+ *
  * @param {string} replacementWord - The word to replace the current finding with.
  */
 async function rewriteDocument(replacementWord: string) {
   const wordToReplace = findings[currentIndex].word;
 
   const result = await new Promise<Office.AsyncResult<any>>((resolve) => {
-    Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, (asyncResult) => resolve(asyncResult));
+    getSelectedData((asyncResult) => resolve(asyncResult));
   });
 
   if (!isAsyncSucceeded(result)) return;
@@ -167,7 +171,7 @@ async function rewriteDocument(replacementWord: string) {
   const updatedText = (result.value as string).replace(new RegExp(`\\b${wordToReplace}\\b`, "gi"), replacementWord);
 
   const setAsyncResult = await new Promise<Office.AsyncResult<any>>((resolve) => {
-    Office.context.document.setSelectedDataAsync(updatedText, (asyncResult) => resolve(asyncResult));
+    setSelectedData(updatedText, (asyncResult) => resolve(asyncResult));
   });
 
   if (!isAsyncSucceeded(setAsyncResult)) {
@@ -177,6 +181,7 @@ async function rewriteDocument(replacementWord: string) {
 
 /**
  * Checks if the result of an async Office operation was successful.
+ *
  * @param {Office.AsyncResult<any>} result - The result of an Office operation.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
@@ -231,6 +236,7 @@ function disableButtonsAndClearInputs() {
 
 /**
  * Toggles the enabled/disabled state of buttons.
+ *
  * @param {boolean} disabled - Whether to disable or enable the buttons.
  */
 function toggleButtons(disabled: boolean) {
@@ -246,13 +252,51 @@ function toggleButtons(disabled: boolean) {
  */
 function clearInputs() {
   foundWordInput.value = "";
-  genderNeutralWordInput.value = "";
+  genderNeutralWordSelect.value = "";
   genderedWordInput.value = "";
+}
+
+/**
+ * Retrieves the selected data from the Office document based on the host type.
+ *
+ * @param {(result: Office.AsyncResult<any>) => void} resolve - The callback function to handle the result.
+ */
+function getSelectedData(resolve: (result: Office.AsyncResult<any>) => void) {
+  switch (hostType) {
+    case Office.HostType.Outlook:
+      return Office.context.mailbox.item.body.getAsync(Office.CoercionType.Text, (asyncResult) => resolve(asyncResult));
+    default:
+      return Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, (asyncResult) => resolve(asyncResult));
+  }
+}
+
+/**
+ * Sets the selected data in the Office document based on the host type.
+ *
+ * @param {string} updatedText - The text to be set in the document.
+ * @param {(result: Office.AsyncResult<any>) => void} resolve - The callback function to handle the result.
+ */
+function setSelectedData(updatedText: string, resolve: (result: Office.AsyncResult<any>) => void) {
+  switch (hostType) {
+    case Office.HostType.Outlook:
+      return Office.context.mailbox.item.body.setAsync(updatedText, (asyncResult) => resolve(asyncResult));
+    default:
+      return Office.context.document.setSelectedDataAsync(updatedText, (asyncResult) => resolve(asyncResult));
+  }
 }
 
 // Initialize the Office add-in when it's ready.
 Office.onReady((info) => {
-  if (info.host === Office.HostType.Word) {
-    setup();
+  hostType = info.host;
+  switch (hostType) {
+    case Office.HostType.Word:
+    case Office.HostType.Excel:
+    case Office.HostType.PowerPoint:
+    case Office.HostType.Outlook:
+      setup();
+      break;
+    default:
+      console.log("Unsupported host application: " + info.host);
+      break;
   }
 });

@@ -11,6 +11,9 @@
   <SupportUrl DefaultValue="https://github.com/drachenpapa/genderify/blob/main/SUPPORT.md"/>
   <Hosts>
     <Host Name="Document"/>
+<!--    <Host Name="Workbook" />-->
+<!--    <Host Name="Presentation" />-->
+<!--    <Host Name="Mail" />-->
   </Hosts>
   <DefaultSettings>
     <SourceLocation DefaultValue="https://localhost:3000/genderify.html"/>
