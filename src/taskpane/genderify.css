@@ -16,37 +16,6 @@ p {
     text-align: left;
 }
 
-.finding-container {
-    margin: 20px;
-    text-align: center;
-}
-
-.genderchar-container,
-.variant-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.genderchar-input {
-    width: 6px;
-    margin-right: 10px;
-}
-
-label {
-    margin-right: 10px;
-    font-weight: bold;
-}
-
-input {
-    padding: 5px;
-    width: 100%;
-    max-width: 200px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
 button {
     padding: 10px 15px;
     background-color: #0078d7;
@@ -62,13 +31,46 @@ button:disabled {
     cursor: not-allowed;
     color: #666666;
 }
-
 button:hover {
     background-color: #005a9e;
 }
 
-#prev-button, #next-button {
-    margin-top: 20px;
+input, select {
+    padding: 5px;
+    width: 100%;
+    max-width: 200px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.analyzis-container {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.finding-container {
+    margin: 20px;
+    text-align: center;
+}
+
+.genderchar-container,
+.variant-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.genderchar-input {
+    width: 6px;
+    margin-right: 10px;
 }
 
 .navigation-buttons {
@@ -77,8 +79,6 @@ button:hover {
     gap: 10px;
 }
 
-.analysis-container {
-    margin: 20px;
-    display: flex;
-    justify-content: center;
+#prev-button, #next-button {
+    margin-top: 20px;
 }
