@@ -85,7 +85,7 @@ function scanText(text: string) {
   const foundWords = new Set<string>();
 
   findings = text.split(/\s+/).reduce((acc, word, index) => {
-    const cleanWord = word.replace(/[.,;:!?()]/g, "");
+    const cleanWord = word.replace(/[.,;:!?()]/g, "").toLowerCase();
 
     if (GenderDictionary[cleanWord] && !foundWords.has(cleanWord)) {
       foundWords.add(cleanWord);
@@ -109,11 +109,11 @@ function scanText(text: string) {
  */
 function updateSelectionMenu() {
   const { word } = findings[currentIndex];
-  foundWordInput.value = word;
-
   genderNeutralWordSelect.innerHTML = "";
 
   const dictionaryEntry = GenderDictionary[word];
+
+  foundWordInput.value = dictionaryEntry.word;
 
   dictionaryEntry.genderNeutralWords.forEach((neutralWord: string) => {
     const option = document.createElement("option");
@@ -122,7 +122,7 @@ function updateSelectionMenu() {
     genderNeutralWordSelect.appendChild(option);
   });
 
-  const genderedVariant = dictionaryEntry.genderForm;
+  const genderedVariant = dictionaryEntry.genderBaseForm;
   genderedWordInput.value = genderedVariant ? `${genderedVariant}${genderCharInput.value}innen` : "";
 
   applyGenderNeutralButton.disabled = false;
