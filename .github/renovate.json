@@ -1,9 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Drachenpapa's default renovate configuration",
+  "description": "Renovate configuration for Genderify",
   "extends": [
     "config:recommended",
     ":automergePatch",
+    ":automergeMinor",
     ":dependencyDashboard",
     ":label(dependencies)",
     ":reviewer(drachenpapa)",
@@ -11,6 +12,8 @@
     ":semanticCommits",
     ":semanticCommitTypeAll(build)",
     ":semanticCommitScope(deps)",
-    ":timezone(Europe/Berlin)"
+    ":timezone(Europe/Berlin)",
+    "group:allNonMajor",
+    ":npm"
   ]
 }

@@ -31,7 +31,7 @@ jobs:
             test
           requireScope: false
 
-  codeql-analysis:
+  codeql-analyzis:
     name: Analyze with CodeQL
     runs-on: ubuntu-latest
     steps:
