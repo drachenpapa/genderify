@@ -6,10 +6,8 @@ on:
       - 'renovate/*'
     types: [opened, edited, reopened, synchronize]
 
-
 permissions:
   pull-requests: read
-
 
 jobs:
   lint-pr-title:
@@ -33,34 +31,28 @@ jobs:
             test
           requireScope: false
 
-
-  codeql-analyzis:
+  codeql-analysis:
     name: Analyze with CodeQL
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up JDK
-        uses: actions/setup-java@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven
-
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: java-kotlin
-
+          languages: javascript
       - name: Build
-        run: mvn -B package -DskipTests
-
+        run: npm run build
       - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@v3
         with:
-          category: "/language:java-kotlin"
-
+          category: "/language:javascript"
 
   snyk-scan:
     name: Snyk Security Scan
@@ -68,18 +60,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up JDK
-        uses: actions/setup-java@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven
-
-      - name: Build
-        run: mvn -B package -DskipTests
-
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install
       - name: Snyk Security Scan
-        uses: snyk/actions/maven@master
+        uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

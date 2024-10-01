@@ -11,6 +11,9 @@
     "app_type_to_debug": "desktop",
     "dev_server_port": 3000
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
@@ -26,7 +29,8 @@
     "stop": "office-addin-debugging stop manifest.xml",
     "validate": "office-addin-manifest validate manifest.xml",
     "watch": "webpack --mode development --watch",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "core-js": "^3.36.0",
