@@ -1,4 +1,9 @@
 # Genderify
+![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
+&nbsp;&nbsp;
+![Vercel](https://deploy-badge.vercel.app/vercel/genderify?root=genderify.html&style=flat-square)
+&nbsp;&nbsp;
+![Snyk](https://img.shields.io/badge/snyk-monitored-00008b?logo=snyk&style=flat-square)
 
 ## Einleitung
 
