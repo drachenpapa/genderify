@@ -9,6 +9,9 @@ export enum ButtonIds {
 export enum InputIds {
   GenderChar = "genderChar",
   FoundWord = "foundWord",
-  GenderNeutralWord = "genderNeutralWord",
   GenderedWord = "genderedWord",
+}
+
+export enum SelectionIds {
+  GenderNeutralWord = "genderNeutralWord"
 }

@@ -1,4 +1,4 @@
-import { ButtonIds, InputIds } from "./enums";
+import { ButtonIds, InputIds, SelectionIds } from "./enums";
 import GenderDictionary from "./genderDictionary.json";
 
 interface Finding {
@@ -6,8 +6,11 @@ interface Finding {
   index: number;
 }
 
-let findings: Finding[] = [];
+let _findings: Finding[] = [];
 let currentIndex = 0;
+
+export const findings = () => _findings;
+
 let hostType: Office.HostType;
 
 let applyGenderNeutralButton: HTMLButtonElement;
@@ -25,7 +28,7 @@ let genderNeutralWordSelect: HTMLSelectElement;
  * Main function that runs when the Office app is ready.
  * It initializes the setup for HTML elements and event listeners.
  */
-async function setup() {
+export async function setup() {
   setupHtmlElements();
   setupEventListeners();
 }
@@ -34,7 +37,7 @@ async function setup() {
  * Sets up HTML elements by assigning them to global variables.
  * This includes buttons, inputs, and select elements used in the UI.
  */
-function setupHtmlElements() {
+export function setupHtmlElements() {
   applyGenderNeutralButton = document.getElementById(ButtonIds.ApplyGenderNeutral) as HTMLButtonElement;
   applyGenderedButton = document.getElementById(ButtonIds.ApplyGendered) as HTMLButtonElement;
   prevButton = document.getElementById(ButtonIds.PrevButton) as HTMLButtonElement;
@@ -44,7 +47,7 @@ function setupHtmlElements() {
   foundWordInput = document.getElementById(InputIds.FoundWord) as HTMLInputElement;
   genderedWordInput = document.getElementById(InputIds.GenderedWord) as HTMLInputElement;
 
-  genderNeutralWordSelect = document.getElementById("genderNeutralWord") as HTMLSelectElement;
+  genderNeutralWordSelect = document.getElementById(SelectionIds.GenderNeutralWord) as HTMLSelectElement;
 }
 
 /**
@@ -64,7 +67,7 @@ function setupEventListeners() {
  * If the text is successfully retrieved, the scanText function is called
  * to look for gender-specific words.
  */
-function analyzeSelectedText() {
+export function analyzeSelectedText() {
   getSelectedData((result) => {
     if (result.status === Office.AsyncResultStatus.Succeeded) {
       scanText(result.value as string);
@@ -81,10 +84,10 @@ function analyzeSelectedText() {
  *
  * @param {string} text - The text to scan.
  */
-function scanText(text: string) {
+export function scanText(text: string) {
   const foundWords = new Set<string>();
 
-  findings = text.split(/\s+/).reduce((acc, word, index) => {
+  _findings = text.split(/\s+/).reduce((acc, word, index) => {
     const cleanWord = word.replace(/[.,;:!?()]/g, "").toLowerCase();
 
     if (GenderDictionary[cleanWord] && !foundWords.has(cleanWord)) {
@@ -94,7 +97,7 @@ function scanText(text: string) {
     return acc;
   }, [] as Finding[]);
 
-  if (findings.length > 0) {
+  if (_findings.length > 0) {
     currentIndex = 0;
     updateSelectionMenu();
     document.getElementById("selection").style.display = "block";
@@ -107,8 +110,8 @@ function scanText(text: string) {
  * Updates the selection menu with the current word and its alternatives.
  * It enables or disables buttons based on the current state of findings.
  */
-function updateSelectionMenu() {
-  const { word } = findings[currentIndex];
+export function updateSelectionMenu() {
+  const { word } = _findings[currentIndex];
   genderNeutralWordSelect.innerHTML = "";
 
   const dictionaryEntry = GenderDictionary[word];
@@ -128,7 +131,7 @@ function updateSelectionMenu() {
   applyGenderNeutralButton.disabled = false;
   genderNeutralWordSelect.disabled = false;
   prevButton.disabled = currentIndex === 0;
-  nextButton.disabled = currentIndex === findings.length - 1;
+  nextButton.disabled = currentIndex === _findings.length - 1;
   applyGenderedButton.disabled = !genderedVariant;
 }
 
@@ -138,7 +141,7 @@ function updateSelectionMenu() {
  * @param {string} inputId - The ID of the input field containing the replacement word.
  * This function handles the replacement and updates the findings list.
  */
-async function replaceWordInDocument(inputId: string) {
+export async function replaceWordInDocument(inputId: string) {
   const wordInput = document.getElementById(inputId) as HTMLInputElement;
   if (!wordInput.value) return;
 
@@ -156,7 +159,7 @@ async function replaceWordInDocument(inputId: string) {
  * @param {string} replacementWord - The word to replace the current finding with.
  */
 async function rewriteDocument(replacementWord: string) {
-  const wordToReplace = findings[currentIndex].word;
+  const wordToReplace = _findings[currentIndex].word;
 
   const result = await new Promise<Office.AsyncResult<any>>((resolve) => {
     getSelectedData((asyncResult) => resolve(asyncResult));
@@ -181,7 +184,7 @@ async function rewriteDocument(replacementWord: string) {
  * @param {Office.AsyncResult<any>} result - The result of an Office operation.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
-function isAsyncSucceeded(result: Office.AsyncResult<any>): boolean {
+export function isAsyncSucceeded(result: Office.AsyncResult<any>): boolean {
   return result.status === Office.AsyncResultStatus.Succeeded;
 }
 
@@ -189,12 +192,12 @@ function isAsyncSucceeded(result: Office.AsyncResult<any>): boolean {
  * Removes the current finding from the list and updates the menu.
  * If no findings are left, the buttons and inputs are cleared.
  */
-function removeFromFindings() {
-  findings.splice(currentIndex, 1);
-  if (findings.length === 0) {
+export function removeFromFindings() {
+  _findings.splice(currentIndex, 1);
+  if (_findings.length === 0) {
     disableButtonsAndClearInputs();
   } else {
-    currentIndex = Math.min(currentIndex, findings.length - 1);
+    currentIndex = Math.min(currentIndex, _findings.length - 1);
     updateSelectionMenu();
   }
 }
@@ -203,7 +206,7 @@ function removeFromFindings() {
  * Moves to the previous word in the findings list.
  * Updates the menu accordingly.
  */
-function goToPreviousMatch() {
+export function goToPreviousMatch() {
   if (currentIndex > 0) {
     currentIndex--;
     updateSelectionMenu();
@@ -214,8 +217,8 @@ function goToPreviousMatch() {
  * Moves to the next word in the findings list.
  * Updates the menu accordingly.
  */
-function goToNextMatch() {
-  if (currentIndex < findings.length - 1) {
+export function goToNextMatch() {
+  if (currentIndex < _findings.length - 1) {
     currentIndex++;
     updateSelectionMenu();
   }
@@ -239,7 +242,7 @@ function toggleButtons(disabled: boolean) {
   applyGenderNeutralButton.disabled = disabled;
   applyGenderedButton.disabled = disabled || !genderedWordInput.value;
   prevButton.disabled = disabled || currentIndex === 0;
-  nextButton.disabled = disabled || currentIndex === findings.length - 1;
+  nextButton.disabled = disabled || currentIndex === _findings.length - 1;
 }
 
 /**
@@ -296,3 +299,7 @@ Office.onReady((info) => {
       break;
   }
 });
+
+export const setFindings = (newFindings: Finding[]) => {
+  _findings = newFindings;
+};
