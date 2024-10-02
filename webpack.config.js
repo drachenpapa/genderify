@@ -3,6 +3,7 @@
 const devCerts = require("office-addin-dev-certs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
 
 const urlDev = "https://localhost:3000/";
 const urlProd = "https://www.contoso.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
@@ -19,14 +20,19 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      taskpane: "./src/taskpane/genderify.ts",
-      commands: "./src/commands/commands.ts",
+      taskpane: path.resolve(__dirname, './src/taskpane/genderify.ts'),
+      commands: path.resolve(__dirname, './src/commands/commands.ts'),
     },
     output: {
+      filename: '[name].js',
+      path: path.resolve(__dirname, 'dist'),
       clean: true,
     },
     resolve: {
-      extensions: [".ts", ".html", ".js"],
+      extensions: [".ts", ".js", ".html"],
+      alias: {
+        '@': path.resolve(__dirname, 'src'),  // Alias für src-Verzeichnis
+      },
     },
     module: {
       rules: [
