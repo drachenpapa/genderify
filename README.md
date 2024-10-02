@@ -21,10 +21,10 @@ Gendern ist ein wichtiger Schritt, um die Gleichstellung der Geschlechter in der
 - **Benutzerfreundlich**: Einfach zu bedienen, auch für Nicht-Techniker.
 
 ## Beitrag
-Beiträge sind willkommen! Wenn Sie eine Verbesserung oder neue Funktion hinzufügen möchten, erstellen Sie einen Pull-Request.
+Beiträge sind willkommen! Wenn Sie eine Verbesserung oder neue Funktion hinzufügen möchten, [erstellen Sie ein Issue](https://github.com/drachenpapa/zatacka/issues/new/choose) oder einen Pull-Request.
 
 ## Lizenz
-Dieses Projekt steht unter der MIT-Lizenz. Weitere Informationen finden Sie in der Datei `LICENSE`.
+Dieses Projekt steht unter der MIT-Lizenz. Weitere Informationen finden Sie in der Datei [LICENSE](LICENSE).
 
 ---
 
