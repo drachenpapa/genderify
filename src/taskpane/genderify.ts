@@ -1,5 +1,5 @@
 import { ButtonIds, InputIds } from "./enums";
-import GenderDictionary from './genderDictionary.json';
+import GenderDictionary from "./genderDictionary.json";
 
 interface Finding {
   word: string;
