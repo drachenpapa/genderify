@@ -1,7 +1,7 @@
 <p align="center"><img src="./assets/icon-128.png" alt="Logo"></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="License">&nbsp;
+  <img src="https://img.shields.io/badge/license-MIT-yellow?style=flat-square" alt="License">&nbsp;
   <img src="https://deploy-badge.vercel.app/vercel/genderify?&style=flat-square" alt="Vercel">&nbsp;
   <img src="https://img.shields.io/badge/snyk-monitored-00008b?logo=snyk&style=flat-square" alt="Snyk">
 </p>
