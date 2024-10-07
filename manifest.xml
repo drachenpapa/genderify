@@ -6,8 +6,10 @@
   <DefaultLocale>de-DE</DefaultLocale>
   <DisplayName DefaultValue="Genderify"/>
   <Description DefaultValue="Verbessere deine Kommunikation mit gendergerechter Sprache."/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
+<!--  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>-->
+  <IconUrl DefaultValue="https://genderify.vercel.app/public/dist/assets/icon-32.png"/>
+<!--  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>-->
+  <HighResolutionIconUrl DefaultValue="https://genderify.vercel.app/public/dist/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://github.com/drachenpapa/genderify/blob/main/SUPPORT.md"/>
   <Hosts>
     <Host Name="Document"/>
@@ -16,7 +18,8 @@
 <!--    <Host Name="Mail" />-->
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/genderify.html"/>
+<!--    <SourceLocation DefaultValue="https://localhost:3000/genderify.html"/>-->
+    <SourceLocation DefaultValue="https://genderify.vercel.app/public/dist/genderify.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -66,16 +69,23 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-        <bt:Image id="Icon.64x64" DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
-        <bt:Image id="Icon.128x128" DefaultValue="https://localhost:3000/assets/icon-128.png"/>
+<!--        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>-->
+<!--        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>-->
+<!--        <bt:Image id="Icon.64x64" DefaultValue="https://localhost:3000/assets/icon-64.png"/>-->
+<!--        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>-->
+<!--        <bt:Image id="Icon.128x128" DefaultValue="https://localhost:3000/assets/icon-128.png"/>-->
+        <bt:Image id="Icon.16x16" DefaultValue="https://genderify.vercel.app/public/dist/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://genderify.vercel.app/public/dist/assets/icon-32.png"/>
+        <bt:Image id="Icon.64x64" DefaultValue="https://genderify.vercel.app/public/dist/assets/icon-64.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://genderify.vercel.app/public/dist/assets/icon-80.png"/>
+        <bt:Image id="Icon.128x128" DefaultValue="https://genderify.vercel.app/public/dist/assets/icon-128.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/genderify.html"/>
+<!--        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>-->
+        <bt:Url id="Commands.Url" DefaultValue="https://genderify.vercel.app/public/dist/commands.html"/>
+<!--        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/genderify.html"/>-->
+        <bt:Url id="Taskpane.Url" DefaultValue="https://genderify.vercel.app/public/dist/genderify.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Starte mit Genderify!"/>

@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
 
 const urlDev = "https://localhost:3000/";
-const urlProd = "https://www.contoso.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+const urlProd = "https://genderify.vercel.app/";
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();
@@ -25,13 +25,13 @@ module.exports = async (env, options) => {
     },
     output: {
       filename: '[name].js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'public/dist'),
       clean: true,
     },
     resolve: {
       extensions: [".ts", ".js", ".html"],
       alias: {
-        '@': path.resolve(__dirname, 'src'),  // Alias für src-Verzeichnis
+        '@': path.resolve(__dirname, 'src'),
       },
     },
     module: {

@@ -33,6 +33,7 @@ coverage/
 dist/
 build/
 lib/
+public/dist/
 
 # IDE specific files
 .idea/
