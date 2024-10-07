@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+button {
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #0078d4;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #005a9e;
+}
+#genderifyOnline {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+#inputContainer {
+    flex: 1;
+    margin-right: 20px;
+}
+#textInput {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+.controls {
+    flex-basis: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
