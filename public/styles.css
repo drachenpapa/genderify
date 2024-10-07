@@ -1,12 +1,39 @@
 body {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
     margin: 0;
-    padding: 20px;
+    padding: 20px 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f9f9f9;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
 }
 
 button {
@@ -25,11 +52,17 @@ button:hover {
     background-color: #c0c0c0;
 }
 
+#foundWord,
+#genderNeutralWord,
+#genderedWord {
+    width: 192px;
+    margin-left: 5px;
+}
+
 #genderifyOnline {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 1200px;
     margin-top: 20px;
 }
 
@@ -49,10 +82,70 @@ button:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.analyze-button {
+    margin-top: 15px;
+    margin-bottom: 35px;
+}
+
+.action-button {
+    padding: 5px 10px;
+    font-size: 16px;
+    margin-left: 10px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.action-button:hover {
+    background-color: #c0c0c0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
 .controls {
     flex-basis: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
+}
+
+.genderchar-input {
+    width: 1.5ch;
+    text-align: center;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.navigation-buttons button {
+    margin: 0 5px;
+}
+
+select#genderNeutralWord {
+    width: 200px;
+}
+
+.variant-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: flex-start;
+}
+
+.variant-container label {
+    margin-right: 3px;
+    min-width: 100px;
+    text-align: right;
 }

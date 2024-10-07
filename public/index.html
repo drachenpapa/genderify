@@ -11,75 +11,79 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <header>
-            <p style="text-align: center;">
-                <img src="./dist/assets/icon-128.png" alt="Logo von Genderify">
-            </p>
+        <div class="container">
+            <header style="text-align: center;">
+                <p>
+                    <img src="./dist/assets/icon-128.png" alt="Logo von Genderify">
+                </p>
 
-            <p style="text-align: center;">
-                <a href="https://raw.githubusercontent.com/drachenpapa/genderify/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT Lizenz"></a>
-                &nbsp;
-                <a href="https://github.com/drachenpapa/genderify"><img src="https://img.shields.io/badge/GitHub-grey?logo=github&style=flat-square" alt="GitHub-Repository"></a>
-            </p>
-        </header>
+                <p>
+                    <a href="https://raw.githubusercontent.com/drachenpapa/genderify/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT Lizenz"></a>
+                    &nbsp;
+                    <a href="https://github.com/drachenpapa/genderify"><img src="https://img.shields.io/badge/GitHub-grey?logo=github&style=flat-square" alt="GitHub-Repository"></a>
+                </p>
+            </header>
 
-        <main>
-            <section>
-                <strong>Genderify</strong> ist ein Open-Source-Projekt, das darauf abzielt, die geschlechtergerechte Sprache in digitalen Dokumenten zu unterstützen.
-                Das Ziel des Projekts ist es, eine einfache und effektive Möglichkeit anzubieten, gendergerechte Alternativen für häufig verwendete Begriffe bereitzustellen.
-                Durch die Verwendung von Genderify soll die Sichtbarkeit aller Geschlechter in der Kommunikation erhöht und eine inklusive Sprache gefördert werden.
-            </section>
+            <main>
+                <section>
+                    <strong>Genderify</strong> ist ein Open-Source-Projekt, das darauf abzielt, die geschlechtergerechte Sprache in digitalen Dokumenten zu unterstützen.
+                    Das Ziel des Projekts ist es, eine einfache und effektive Möglichkeit anzubieten, gendergerechte Alternativen für häufig verwendete Begriffe bereitzustellen.
+                    Durch die Verwendung von Genderify soll die Sichtbarkeit aller Geschlechter in der Kommunikation erhöht und eine inklusive Sprache gefördert werden.
+                </section>
 
-            <section>
-                Gendergerechte Sprache ist ein entscheidender Schritt zur Förderung der Gleichstellung der Geschlechter in der Gesellschaft.
-                Viele Begriffe in der deutschen Sprache sind geschlechtsspezifisch und spiegeln nicht die Vielfalt der Geschlechteridentitäten wider.
-                Daher ist es von großer Bedeutung, die Sprache anzupassen, um alle Menschen anzusprechen. Durch die Verwendung gendergerechter Sprache wird Inklusivität gefördert,
-                indem alle Geschlechter angesprochen und Sichtbarkeit sowie Zugehörigkeit geschaffen werden.
-            </section>
+                <section>
+                    Gendergerechte Sprache ist ein entscheidender Schritt zur Förderung der Gleichstellung der Geschlechter in der Gesellschaft.
+                    Viele Begriffe in der deutschen Sprache sind geschlechtsspezifisch und spiegeln nicht die Vielfalt der Geschlechteridentitäten wider.
+                    Daher ist es von großer Bedeutung, die Sprache anzupassen, um alle Menschen anzusprechen. Durch die Verwendung gendergerechter Sprache wird Inklusivität gefördert,
+                    indem alle Geschlechter angesprochen und Sichtbarkeit sowie Zugehörigkeit geschaffen werden.
+                </section>
 
-            <h1 style="text-align: center;">Genderify Online Tool</h1>
-            <div id="genderifyOnline">
-                <div id="inputContainer">
-                    <textarea id="textInput" placeholder="Geben Sie Ihren Text hier ein..." required style="min-height: 100px;"></textarea>
+                <h1 style="text-align: center;">Genderify Online Tool</h1>
+                <div id="genderifyOnline">
+                    <div id="inputContainer">
+                        <textarea id="textInput" placeholder="Geben Sie Ihren Text hier ein..." required style="min-height: 100px;"></textarea>
+                    </div>
+                    <div class="controls">
+                        <div class="genderchar-container">
+                            <label for="genderChar">Genderzeichen:</label>
+                            <input id="genderChar" class="genderchar-input" type="text" value="*" maxlength="1" aria-describedby="genderCharDesc" />
+                        </div>
+
+                        <div class="analyzis-container">
+                            <button id="analyze-button" class="analyze-button" aria-label="Text überprüfen">🔍 Überprüfen</button>
+                        </div>
+
+                        <div id="selection" class="finding-container" aria-live="polite">
+                            <div id="foundWordContainer" class="variant-container">
+                                <label for="foundWord">Gefunden:</label>
+                                <input id="foundWord" type="text" readonly />
+                            </div>
+
+                            <div id="genderNeutralVariantContainer" class="variant-container">
+                                <label for="genderNeutralWord">Alternative:</label>
+                                <select id="genderNeutralWord" aria-label="Wählen Sie ein genderneutrales Wort"></select>
+                                <button id="applyGenderNeutral" class="action-button" aria-label="Genderneutrales Wort verwenden">✔️</button>
+                            </div>
+
+                            <div id="genderedVariantContainer" class="variant-container">
+                                <label for="genderedWord">Gegendert:</label>
+                                <input id="genderedWord" type="text" readonly />
+                                <button id="applyGendered" class="action-button" aria-label="Gegenderte Form verwenden">✔️</button>
+                            </div>
+
+                            <div class="navigation-buttons">
+                                <button id="prev-button" aria-label="Vorheriges Wort">⬅️ Vorheriges</button>
+                                <button id="next-button" aria-label="Nächstes Wort">➡️ Nächstes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="controls">
-                    <div class="genderchar-container">
-                        <label for="genderChar">Genderzeichen:</label>
-                        <input type="text" class="genderchar-input" id="genderChar" value="*" maxlength="1" aria-describedby="genderCharDesc" />
-                        <small id="genderCharDesc">Geben Sie ein Genderzeichen ein (z. B. *).</small>
-                    </div>
+            </main>
+        </div>
 
-                    <div class="analyzis-container">
-                        <button class="analyze-button" id="analyze-button" aria-label="Text überprüfen">🔍 Überprüfen</button>
-                    </div>
-
-                    <div class="finding-container" id="selection" aria-live="polite">
-                        <div class="variant-container" id="foundWordContainer">
-                            <label for="foundWord">Gefunden:</label>
-                            <input type="text" id="foundWord" readonly />
-                        </div>
-
-                        <div class="variant-container" id="genderNeutralVariantContainer">
-                            <label for="genderNeutralWord">Alternative:</label>
-                            <select id="genderNeutralWord" aria-label="Wählen Sie ein genderneutrales Wort">
-                            </select>
-                            <button id="applyGenderNeutral" class="action-button" aria-label="Genderneutrales Wort verwenden">✔️</button>
-                        </div>
-
-                        <div class="variant-container" id="genderedVariantContainer">
-                            <label for="genderedWord">Gegendert:</label>
-                            <input type="text" id="genderedWord" readonly />
-                            <button id="applyGendered" class="action-button" aria-label="Gegenderte Form verwenden">✔️</button>
-                        </div>
-
-                        <div class="navigation-buttons">
-                            <button id="prev-button" aria-label="Vorheriges Wort">⬅️ Vorheriges</button>
-                            <button id="next-button" aria-label="Nächstes Wort">➡️ Nächstes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+        <footer>
+            <p>&copy; 2024 <a href="https://github.com/drachenpapa">drachenpapa</a>. Alle Rechte vorbehalten.</p>
+        </footer>
 
         <script src="script.js"></script>
     </body>
