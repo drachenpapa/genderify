@@ -2,7 +2,7 @@ name: Snyk Security
 
 on:
   push:
-    branches: ["main" ]
+    branches: ["main"]
   pull_request:
     branches: ["main"]
 
@@ -29,7 +29,7 @@ jobs:
         uses: snyk/actions/setup@master
 
       - name: Snyk Code test
-          run: snyk code test --sarif-file-output=snyk.sarif
+        run: snyk code test --sarif-file-output=snyk.sarif
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
