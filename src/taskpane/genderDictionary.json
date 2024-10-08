@@ -104,14 +104,6 @@
       "Abteilungsleitung"
     ]
   },
-  "abteilungsleitertreffen": {
-    "word": "Abteilungsleitertreffen",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Treffen der Abteilungsleitungen",
-      "Treffen der Leitungsebene"
-    ]
-  },
   "administrator": {
     "word": "Administrator",
     "genderBaseForm": "Administrator",
@@ -143,13 +135,6 @@
       "zielgruppengerecht"
     ]
   },
-  "adressatenkreis": {
-    "word": "Adressatenkreis",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Zielgruppe"
-    ]
-  },
   "agent": {
     "word": "Agent",
     "genderBaseForm": "Agentin",
@@ -164,13 +149,6 @@
     "genderBaseForm": "",
     "genderNeutralWords": [
       "Spionagefilm"
-    ]
-  },
-  "agententhriller": {
-    "word": "Agententhriller",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Spionagethriller"
     ]
   },
   "akademiker": {
@@ -250,22 +228,6 @@
       "allergieleidende Personen"
     ]
   },
-  "alleskönner": {
-    "word": "Alleskönner",
-    "genderBaseForm": "Alleskönner",
-    "genderNeutralWords": [
-      "Multitalent",
-      "Universalgenie",
-      "vielseitig begabter Mensch"
-    ]
-  },
-  "allgemeinmediziner": {
-    "word": "Allgemeinmediziner",
-    "genderBaseForm": "Allgemeinmediziner",
-    "genderNeutralWords": [
-      "Allgemeinmedizin praktizierende Person"
-    ]
-  },
   "alltagshelden": {
     "word": "Alltagshelden",
     "genderBaseForm": "Alltagsheld",
@@ -320,13 +282,6 @@
       "Senioritätsrat"
     ]
   },
-  "altkanzler": {
-    "word": "Altkanzler",
-    "genderBaseForm": "Altkanzler",
-    "genderNeutralWords": [
-      "ehemalige Regierungsoberhäupter"
-    ]
-  },
   "amateur": {
     "word": "Amateur",
     "genderBaseForm": "Amateur",
@@ -344,13 +299,6 @@
       "Anfangende",
       "Beginnende",
       "Ungeübte"
-    ]
-  },
-  "ampelmännchen": {
-    "word": "Ampelmännchen",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Ampelfiguren"
     ]
   },
   "amtsinhaber": {
@@ -449,14 +397,6 @@
       "angeklagte Person"
     ]
   },
-  "angesprochener": {
-    "word": "Angesprochener",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "angesprochene Person",
-      "kontaktierte Person"
-    ]
-  },
   "angler": {
     "word": "Angler",
     "genderBaseForm": "Angler",
@@ -525,14 +465,6 @@
     "genderBaseForm": "Anleger",
     "genderNeutralWords": [
       "Anlegende"
-    ]
-  },
-  "anleiter": {
-    "word": "Anleiter",
-    "genderBaseForm": "Anleiter",
-    "genderNeutralWords": [
-      "anleitende Person",
-      "Anleitung"
     ]
   },
   "anlieger": {
@@ -604,27 +536,13 @@
       "Rechtsbeistand"
     ]
   },
-  "anwaltskosten": {
-    "word": "Anwaltskosten",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Kosten für die Rechtsvertretung"
-    ]
-  },
-  "anwärter": {
-    "word": "Anwärter",
-    "genderBaseForm": "Anwärter",
-    "genderNeutralWords": [
-      "Person im Vorbereitungsdienst"
-    ]
-  },
   "anwender": {
     "word": "Anwender",
     "genderBaseForm": "Anwender",
     "genderNeutralWords": [
-      "anwendende Person",
+      "Anwendende",
       "Nutzende",
-      "Anwendende"
+      "anwendende Person"
     ]
   },
   "anwenderbezogen": {
@@ -673,29 +591,14 @@
     "word": "Arbeitgeber",
     "genderBaseForm": "Arbeitgeber",
     "genderNeutralWords": [
-      "Führungskraft",
+      "Unternehmen",
       "arbeitgebendes Unternehmen",
       "Firma",
-      "Unternehmen",
       "Arbeitsstelle",
       "Arbeitgebende",
       "Betriebe",
-      "Unternehmen"
-    ]
-  },
-  "arbeitgeberattraktivität": {
-    "word": "Arbeitgeberattraktivität",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Arbeitsplatzattraktivität"
-    ]
-  },
-  "arbeitgebervorteile": {
-    "word": "Arbeitgebervorteile",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Firmenvorteile",
-      "Unternehmensvorteile"
+      "Unternehmen",
+      "Führungskraft"
     ]
   },
   "arbeitnehmer": {
@@ -749,13 +652,6 @@
     "genderBaseForm": "Architekt",
     "genderNeutralWords": [
       "Architekturschaffende"
-    ]
-  },
-  "archivar": {
-    "word": "Archivar",
-    "genderBaseForm": "Archivar",
-    "genderNeutralWords": [
-      "Fachkraft für Archivwesen"
     ]
   },
   "archivare": {
@@ -862,13 +758,6 @@
       "Gesundheitstermin"
     ]
   },
-  "arztzeugnis": {
-    "word": "Arztzeugnis",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "ärztliches Zeugnis"
-    ]
-  },
   "arztzimmer": {
     "word": "Arztzimmer",
     "genderBaseForm": "",
@@ -878,52 +767,11 @@
       "Konsultationszimmer"
     ]
   },
-  "asket": {
-    "word": "Asket",
-    "genderBaseForm": "Asket",
-    "genderNeutralWords": [
-      "asketisch lebende Person"
-    ]
-  },
-  "aspirant": {
-    "word": "Aspirant",
-    "genderBaseForm": "Aspirant",
-    "genderNeutralWords": [
-      "bewerbende Person"
-    ]
-  },
-  "assessor": {
-    "word": "Assessor",
-    "genderBaseForm": "Assessor",
-    "genderNeutralWords": [
-      "sachverständige Person",
-      "taxierende Person",
-      "einschätzende Person",
-      "schadensachverständige Person"
-    ]
-  },
-  "assessoren": {
-    "word": "Assessoren",
-    "genderBaseForm": "Assessor",
-    "genderNeutralWords": [
-      "Sachverständige",
-      "Taxierende",
-      "Einschätzende",
-      "Schadensachverständige"
-    ]
-  },
   "assistent": {
     "word": "Assistent",
     "genderBaseForm": "Assistent",
     "genderNeutralWords": [
       "Assistenz"
-    ]
-  },
-  "astronaut": {
-    "word": "Astronaut",
-    "genderBaseForm": "Astronaut",
-    "genderNeutralWords": [
-      "ins Weltall reisende Person"
     ]
   },
   "astronauten": {
@@ -938,8 +786,7 @@
     "word": "Asylbewerber",
     "genderBaseForm": "Asylbewerber",
     "genderNeutralWords": [
-      "Asylsuchende",
-      "Personen im Asylverfahren"
+      "Asylsuchende"
     ]
   },
   "atheist": {
@@ -967,20 +814,6 @@
     "genderNeutralWords": [
       "Sporttreibende",
       "Wettkämpfende"
-    ]
-  },
-  "attentäter": {
-    "word": "Attentäter",
-    "genderBaseForm": "Attentäter",
-    "genderNeutralWords": [
-      "Person, die ein Attentat verübt"
-    ]
-  },
-  "auditor": {
-    "word": "Auditor",
-    "genderBaseForm": "Auditor",
-    "genderNeutralWords": [
-      "auditdurchführende Person"
     ]
   },
   "auftraggeber": {
@@ -1022,13 +855,6 @@
       "Beobachtende"
     ]
   },
-  "aupairmädchen": {
-    "word": "Aupairmädchen",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Aupair"
-    ]
-  },
   "ausbilder": {
     "word": "Ausbilder",
     "genderBaseForm": "Ausbilder",
@@ -1036,24 +862,6 @@
       "Lehrkraft",
       "ausbildender Betrieb",
       "Ausbildende"
-    ]
-  },
-  "ausbildereignung": {
-    "word": "Ausbildereignung",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Eignung zur Ausbildung",
-      "Eignung als ausbildende Person",
-      "Eignung zur Anleitung von Auszubildenden"
-    ]
-  },
-  "ausländer": {
-    "word": "Ausländer",
-    "genderBaseForm": "Ausländer",
-    "genderNeutralWords": [
-      "Person aus dem Ausland",
-      "ausländische Person",
-      "Person mit anderer Staatsangehörigkeit"
     ]
   },
   "ausländerbehörde": {
@@ -1072,35 +880,13 @@
       "Mitarbeitende im Außendienst"
     ]
   },
-  "aussiedler": {
-    "word": "Aussiedler",
-    "genderBaseForm": "Aussiedler",
-    "genderNeutralWords": [
-      "ausgesiedelte Person",
-      "ausgesiedelte Personen"
-    ]
-  },
-  "ausstatter": {
-    "word": "Ausstatter",
-    "genderBaseForm": "Ausstatter",
-    "genderNeutralWords": [
-      "ausstattende Person"
-    ]
-  },
-  "aussteiger": {
-    "word": "Aussteiger",
-    "genderBaseForm": "Aussteiger",
-    "genderNeutralWords": [
-      "aussteigende Person"
-    ]
-  },
   "aussteller": {
     "word": "Aussteller",
     "genderBaseForm": "Aussteller",
     "genderNeutralWords": [
-      "ausstellende Person",
       "Präsentierende",
-      "Ausstellende"
+      "Ausstellende",
+      "ausstellende Person"
     ]
   },
   "ausstellerausweis": {
@@ -1109,14 +895,6 @@
     "genderNeutralWords": [
       "Ausweis der Ausstellenden",
       "Ausweis der ausstellenden Person"
-    ]
-  },
-  "ausstellerliste": {
-    "word": "Ausstellerliste",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Liste der Ausstellenden",
-      "Ausstellendenliste"
     ]
   },
   "austauschpartner": {
@@ -1145,13 +923,6 @@
       "ausgewanderte Person",
       "Auswandernde",
       "Ausgewanderte"
-    ]
-  },
-  "ausweisinhaber": {
-    "word": "Ausweisinhaber",
-    "genderBaseForm": "Ausweisinhaber",
-    "genderNeutralWords": [
-      "Ausweis inhabende Person"
     ]
   },
   "auszubildender": {
@@ -1185,16 +956,9 @@
     "word": "Autohersteller",
     "genderBaseForm": "Autohersteller",
     "genderNeutralWords": [
-      "Automobilkonzerne",
+      "Automobilkonzern",
       "Autoherstellende",
       "Autobauende"
-    ]
-  },
-  "autor": {
-    "word": "Autor",
-    "genderBaseForm": "Autor",
-    "genderNeutralWords": [
-      "bücherschreibende Person"
     ]
   },
   "autoren": {
@@ -1257,13 +1021,6 @@
       "Bankkaufperson"
     ]
   },
-  "bankräuber": {
-    "word": "Bankräuber",
-    "genderBaseForm": "Bankräuber",
-    "genderNeutralWords": [
-      "Bankausraubende"
-    ]
-  },
   "barkeeper": {
     "word": "Barkeeper",
     "genderBaseForm": "",
@@ -1294,21 +1051,6 @@
       "landwirtschaftlicher Betrieb"
     ]
   },
-  "bauernkrieg": {
-    "word": "Bauernkrieg",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Krieg der landbewirtschaftenden Bevölkerung"
-    ]
-  },
-  "bauernverband": {
-    "word": "Bauernverband",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Landwirtschaftsverband",
-      "Agrarverband"
-    ]
-  },
   "bauherr": {
     "word": "Bauherr",
     "genderBaseForm": "",
@@ -1328,9 +1070,9 @@
     "word": "Bauträger",
     "genderBaseForm": "Bauträger",
     "genderNeutralWords": [
-      "für den Bau verantwortliche Firma",
       "Bautragende",
-      "Bauverantwortliche"
+      "Bauverantwortliche",
+      "für den Bau verantwortliche Firma"
     ]
   },
   "beamter": {
@@ -1343,13 +1085,6 @@
       "staatsdienende Person",
       "Bedienstete",
       "Beamtenschaft"
-    ]
-  },
-  "beamtenlaufbahn": {
-    "word": "Beamtenlaufbahn",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "verbeamteter Werdegang"
     ]
   },
   "bearbeiter": {
@@ -1380,16 +1115,8 @@
     "word": "Berufsanfänger",
     "genderBaseForm": "Berufsanfänger",
     "genderNeutralWords": [
-      "Berufsunerfahrene",
-      "Berufseinsteigende"
-    ]
-  },
-  "berufskraftfahrer": {
-    "word": "Berufskraftfahrer",
-    "genderBaseForm": "Berufskraftfahrer",
-    "genderNeutralWords": [
-      "qualifizierte fahrzeugführende Person (nach BKrFQG)",
-      "Berufskraftfahrende"
+      "Berufseinsteigende",
+      "Berufsunerfahrene"
     ]
   },
   "berufsschüler": {
@@ -1488,8 +1215,7 @@
     "word": "Besucherrückgang",
     "genderBaseForm": "",
     "genderNeutralWords": [
-      "sinkende Nachfrage",
-      "Rückgang der Besuche"
+      "sinkende Nachfrage"
     ]
   },
   "besucherstrom": {
@@ -1572,25 +1298,11 @@
       "Opfer"
     ]
   },
-  "betrüger": {
-    "word": "Betrüger",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "unehrliche Person"
-    ]
-  },
   "bevollmächtigter": {
     "word": "Bevollmächtigter",
     "genderBaseForm": "",
     "genderNeutralWords": [
       "bevollmächtigte Person"
-    ]
-  },
-  "bewahrer": {
-    "word": "Bewahrer",
-    "genderBaseForm": "Bewahrer",
-    "genderNeutralWords": [
-      "bewahrende Person"
     ]
   },
   "bewerber": {
@@ -1611,13 +1323,6 @@
       "mangelnde Bewerbungen"
     ]
   },
-  "bewerberzahlen": {
-    "word": "Bewerberzahlen",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Bewerbungszahlen"
-    ]
-  },
   "bewohner": {
     "word": "Bewohner",
     "genderBaseForm": "Bewohner",
@@ -1625,14 +1330,6 @@
       "Ortsansässige",
       "Bewohnende",
       "Bewohnerschaft"
-    ]
-  },
-  "bewohnerzimmer": {
-    "word": "Bewohnerzimmer",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Bewohnendenzimmer",
-      "Zimmer"
     ]
   },
   "bezieher": {
@@ -1654,8 +1351,8 @@
     "word": "Bieter",
     "genderBaseForm": "Bieter",
     "genderNeutralWords": [
-      "bietende Partei",
-      "bietende Person"
+      "bietende Person",
+      "bietende Partei"
     ]
   },
   "bildungsträger": {
@@ -1671,16 +1368,6 @@
     "genderNeutralWords": [
       "Fachkraft für Biologie",
       "Person mit biologischem Fachwissen"
-    ]
-  },
-  "blindenführer": {
-    "word": "Blindenführer",
-    "genderBaseForm": "Blindenführer",
-    "genderNeutralWords": [
-      "Mobilitätshilfe",
-      "Begleitung für blinde Menschen",
-      "Blindenguide",
-      "Guide für blinde Menschen"
     ]
   },
   "blockwart": {
@@ -1731,7 +1418,7 @@
   },
   "brandschutzbeauftragter": {
     "word": "Brandschutzbeauftragter",
-    "genderBaseForm": "Brandschutzbeauftragter",
+    "genderBaseForm": "",
     "genderNeutralWords": [
       "Brandschutzbeauftragte",
       "beauftragte Person für Brandschutz"
@@ -1776,21 +1463,6 @@
       "Feindbild",
       "schuldige Person",
       "Zielscheibe"
-    ]
-  },
-  "buddhisten": {
-    "word": "Buddhisten",
-    "genderBaseForm": "Buddhist",
-    "genderNeutralWords": [
-      "Menschen buddhistischen Glaubens"
-    ]
-  },
-  "bundespräsident": {
-    "word": "Bundespräsident",
-    "genderBaseForm": "Bundespräsident",
-    "genderNeutralWords": [
-      "Staatsoberhaupt einer Bundesrepublik",
-      "Person, die die Bundespräsidentschaft inne hat"
     ]
   },
   "bundespräsidentenwahl": {
@@ -1881,14 +1553,6 @@
       "Buspersonal"
     ]
   },
-  "camper": {
-    "word": "Camper",
-    "genderBaseForm": "Camper",
-    "genderNeutralWords": [
-      "campende Person",
-      "Camping liebende Person"
-    ]
-  },
   "chauffeur": {
     "word": "Chauffeur",
     "genderBaseForm": "Chauffeur",
@@ -1919,16 +1583,6 @@
       "chefärztliche Behandlung"
     ]
   },
-  "chefsache": {
-    "word": "Chefsache",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "dringliche Angelegenheit",
-      "Sache mit oberster Priorität",
-      "Angelegenheit mit besonderer Wichtigkeit",
-      "dringliche Sache"
-    ]
-  },
   "chemiker": {
     "word": "Chemiker",
     "genderBaseForm": "Chemiker",
@@ -1940,8 +1594,7 @@
     "word": "Chirurg",
     "genderBaseForm": "Chirurg",
     "genderNeutralWords": [
-      "chirurgische Fachkraft",
-      "chirurgische Fachperson"
+      "chirurgische Fachkraft"
     ]
   },
   "chirurgen": {
@@ -1951,13 +1604,6 @@
       "chirurgisches Fachpersonal"
     ]
   },
-  "chirurgenstahl": {
-    "word": "Chirurgenstahl",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Chirurgiestahl"
-    ]
-  },
   "chorleiter": {
     "word": "Chorleiter",
     "genderBaseForm": "Chorleiter",
@@ -1965,28 +1611,6 @@
       "Chorleitung",
       "Chorleitende",
       "Chorleitungen"
-    ]
-  },
-  "damenfahrrad": {
-    "word": "Damenfahrrad",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Trapezrahmenfahrrad",
-      "Fahrrad mit tiefem Einstieg"
-    ]
-  },
-  "damenhaft": {
-    "word": "damenhaft",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "fein"
-    ]
-  },
-  "damenprogramm": {
-    "word": "Damenprogramm",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Begleitprogramm"
     ]
   },
   "darsteller": {
@@ -2000,8 +1624,7 @@
     "word": "Kinderdarsteller",
     "genderBaseForm": "Kinderdarsteller",
     "genderNeutralWords": [
-      "schauspielendes Kind",
-      "darstellende Person im Kindesalter"
+      "schauspielendes Kind"
     ]
   },
   "dekan": {
@@ -2010,15 +1633,6 @@
     "genderNeutralWords": [
       "Leitung des Dekanats",
       "Dekanat"
-    ]
-  },
-  "demokraten": {
-    "word": "Demokraten",
-    "genderBaseForm": "Demokrat",
-    "genderNeutralWords": [
-      "Demokratiebegeisterte",
-      "Demokratieüberzeugte",
-      "demokratisch eingestellte Personen"
     ]
   },
   "demonstranten": {
@@ -2039,8 +1653,7 @@
     "word": "Detektiv",
     "genderBaseForm": "Detektiv",
     "genderNeutralWords": [
-      "privat ermittelnde Person",
-      "nach Hinweisen suchende Person"
+      "privat ermittelnde Person"
     ]
   },
   "diabetiker": {
@@ -2057,14 +1670,6 @@
     "genderNeutralWords": [
       "dichtende Person",
       "poetische Person"
-    ]
-  },
-  "diebe": {
-    "word": "Diebe",
-    "genderBaseForm": "",
-    "genderNeutralWords": [
-      "Kriminelle",
-      "Langfinger"
     ]
   },
   "dienstherr": {
@@ -2092,18 +1697,397 @@
       "Dienstleistungsunternehmen"
     ]
   },
-  "diskutanten": {
-    "word": "Diskutanten",
-    "genderBaseForm": "Diskutant",
-    "genderNeutralWords": [
-      "Diskutierende"
-    ]
-  },
   "doktoranden": {
     "word": "Doktoranden",
     "genderBaseForm": "Doktorand",
     "genderNeutralWords": [
       "Promovierende"
+    ]
+  },
+  "editor": {
+    "word": "Editor",
+    "genderBaseForm": "Editor",
+    "genderNeutralWords": [
+      "herausgebende Person"
+    ]
+  },
+  "ehegatte": {
+    "word": "Ehegatte",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Ehemensch",
+      "Eheherzperson",
+      "Herzmensch",
+      "Herzensmensch"
+    ]
+  },
+  "ehegatten": {
+    "word": "Ehegatten",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Eheleute"
+    ]
+  },
+  "ehepartner": {
+    "word": "Ehepartner",
+    "genderBaseForm": "Ehepartner",
+    "genderNeutralWords": [
+      "geehelichte Person",
+      "Ehemensch"
+    ]
+  },
+  "ehrenamtler": {
+    "word": "Ehrenamtler",
+    "genderBaseForm": "Ehrenamtler",
+    "genderNeutralWords": [
+      "Ehrenamtliche",
+      "Freiwillige",
+      "ehrenamtlich Engagierte"
+    ]
+  },
+  "einbrecher": {
+    "word": "Einbrecher",
+    "genderBaseForm": "Einbrecher",
+    "genderNeutralWords": [
+      "einbrechende Person"
+    ]
+  },
+  "einflussnehmer": {
+    "word": "Einflussnehmer",
+    "genderBaseForm": "Einflussnehmer",
+    "genderNeutralWords": [
+      "Einfluss nehmende Person",
+      "Einflussnehmende"
+    ]
+  },
+  "einkäufer": {
+    "word": "Einkäufer",
+    "genderBaseForm": "Einkäufer",
+    "genderNeutralWords": [
+      "einkaufende Person"
+    ]
+  },
+  "ein-mann-armee": {
+    "word": "Ein-Mann-Armee",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Ein-Personen-Armee"
+    ]
+  },
+  "ein-mann-betrieb": {
+    "word": "Ein-Mann-Betrieb",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Ein-Personen-Betrieb"
+    ]
+  },
+  "einsteigerkurs": {
+    "word": "Einsteigerkurs",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Einstiegskurs",
+      "Grundlagenkurs",
+      "Grundkurs",
+      "Basiskurs"
+    ]
+  },
+  "einwohner": {
+    "word": "Einwohner",
+    "genderBaseForm": "Einwohner",
+    "genderNeutralWords": [
+      "Bevölkerung",
+      "Population",
+      "gemeldete Person",
+      "Basiskurs"
+    ]
+  },
+  "einwohnerdichte": {
+    "word": "Einwohnerdichte",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Bevölkerungsdichte"
+    ]
+  },
+  "einwohnerzahl": {
+    "word": "Einwohnerzahl",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Bevölkerungszahl"
+    ]
+  },
+  "einzelkämpfer": {
+    "word": "Einzelkämpfer",
+    "genderBaseForm": "Einzelkämpfer",
+    "genderNeutralWords": [
+      "Einzelkämpfende"
+    ]
+  },
+  "einziger": {
+    "word": "Einziger",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "einzige Person"
+    ]
+  },
+  "elektriker": {
+    "word": "Elektriker",
+    "genderBaseForm": "Elektriker",
+    "genderNeutralWords": [
+      "Fachkraft für Elektrotechnik"
+    ]
+  },
+  "elektroniker": {
+    "word": "Elektroniker",
+    "genderBaseForm": "Elektroniker",
+    "genderNeutralWords": [
+      "Elektrofachkraft"
+    ]
+  },
+  "elektrotechniker": {
+    "word": "Elektrotechniker",
+    "genderBaseForm": "Elektrotechniker",
+    "genderNeutralWords": [
+      "Elektrofachkraft"
+    ]
+  },
+  "empfänger": {
+    "word": "Empfänger",
+    "genderBaseForm": "Empfänger",
+    "genderNeutralWords": [
+      "empfangende Person",
+      "empfangsberechtigte Person"
+    ]
+  },
+  "empfangsdame": {
+    "word": "Empfangsdame",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Empfang",
+      "Rezeption"
+    ]
+  },
+  "endverbraucher": {
+    "word": "Endverbraucher",
+    "genderBaseForm": "Endverbraucher",
+    "genderNeutralWords": [
+      "Endverbrauchende",
+      "Endkonsumierende"
+    ]
+  },
+  "energieversorger": {
+    "word": "Energieversorger",
+    "genderBaseForm": "Energieversorger",
+    "genderNeutralWords": [
+      "Energieversorgungsunternehmen"
+    ]
+  },
+  "enkel": {
+    "word": "Enkel",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Enkelkind"
+    ]
+  },
+  "entdecker": {
+    "word": "Entdecker",
+    "genderBaseForm": "Entdecker",
+    "genderNeutralWords": [
+      "Entdeckende",
+      "Forschende",
+      "entdeckende Person"
+    ]
+  },
+  "enthusiast": {
+    "word": "Enthusiast",
+    "genderBaseForm": "Enthusiast",
+    "genderNeutralWords": [
+      "enthusiastische Person",
+      "begeisterte Person"
+    ]
+  },
+  "enthusiasten": {
+    "word": "Enthusiasten",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Begeisterte"
+    ]
+  },
+  "entscheidungsträger": {
+    "word": "Entscheidungsträger",
+    "genderBaseForm": "Entscheidungsträger",
+    "genderNeutralWords": [
+      "Person mit Entscheidungsbefugnis",
+      "Entscheidungtragende"
+    ]
+  },
+  "entwickler": {
+    "word": "Entwickler",
+    "genderBaseForm": "Entwickler",
+    "genderNeutralWords": [
+      "entwickelnde Person",
+      "Entwicklungsabteilung",
+      "Entwicklungsteam",
+      "Entwickelnde"
+    ]
+  },
+  "erbauer": {
+    "word": "Erbauer",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Konstruierende",
+      "Erschaffende"
+    ]
+  },
+  "erbe": {
+    "word": "Erbe",
+    "genderBaseForm": "Erb",
+    "genderNeutralWords": [
+      "erbberechtigte Person"
+    ]
+  },
+  "erben": {
+    "word": "Erben",
+    "genderBaseForm": "Erb",
+    "genderNeutralWords": [
+      "Erbberechtigte"
+    ]
+  },
+  "erblasser": {
+    "word": "Erblasser",
+    "genderBaseForm": "Erblasser",
+    "genderNeutralWords": [
+      "vererbende Person",
+      "Erbe hinterlassende Person"
+    ]
+  },
+  "erfinder": {
+    "word": "Erfinder",
+    "genderBaseForm": "Erfinder",
+    "genderNeutralWords": [
+      "erfindende Person",
+      "ideenfindende Person"
+    ]
+  },
+  "erkrankter": {
+    "word": "Erkrankter",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "erkrankte Person"
+    ]
+  },
+  "ermittler": {
+    "word": "Ermittler",
+    "genderBaseForm": "Ermittler",
+    "genderNeutralWords": [
+      "Ermittelnde",
+      "Ermittlungsteam"
+    ]
+  },
+  "ersthelfer": {
+    "word": "Ersthelfer",
+    "genderBaseForm": "Ersthelfer",
+    "genderNeutralWords": [
+      "erste Hilfe leistende Person"
+    ]
+  },
+  "erwachsener": {
+    "word": "Erwachsener",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "erwachsene Person"
+    ]
+  },
+  "erzähler": {
+    "word": "Erzähler",
+    "genderBaseForm": "Erzähler",
+    "genderNeutralWords": [
+      "erzählende Figur",
+      "erzählende Person",
+      "Erzählende"
+    ]
+  },
+  "erzeuger": {
+    "word": "Erzeuger",
+    "genderBaseForm": "Erzeuger",
+    "genderNeutralWords": [
+      "Erzeugende"
+    ]
+  },
+  "erzieher": {
+    "word": "Erzieher",
+    "genderBaseForm": "Erzieher",
+    "genderNeutralWords": [
+      "pädagogische Fachkraft",
+      "Erziehungskraft"
+    ]
+  },
+  "erziehungsberechtigter": {
+    "word": "Erziehungsberechtigter",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "erziehungsberechtigte Person"
+    ]
+  },
+  "evakuierungshelfer": {
+    "word": "Evakuierungshelfer",
+    "genderBaseForm": "Evakuierungshelfer",
+    "genderNeutralWords": [
+      "Evakuierungshilfe"
+    ]
+  },
+  "exot": {
+    "word": "Exot",
+    "genderBaseForm": "Exot",
+    "genderNeutralWords": [
+      "Ausnahmeerscheinung"
+    ]
+  },
+  "experte": {
+    "word": "Experte",
+    "genderBaseForm": "Expert",
+    "genderNeutralWords": [
+      "Person vom Fach",
+      "Autorität",
+      "Koryphäe",
+      "Fachkraft"
+    ]
+  },
+  "experten": {
+    "word": "Experten",
+    "genderBaseForm": "Expert",
+    "genderNeutralWords": [
+      "Fachkundige",
+      "Fachkräfte",
+      "Sachverständige"
+    ]
+  },
+  "expertenkommission": {
+    "word": "Expertenkommission",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Fachkommission"
+    ]
+  },
+  "expertenstab": {
+    "word": "Expertenstab",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Fachgremium"
+    ]
+  },
+  "expertenwissen": {
+    "word": "Expertenwissen",
+    "genderBaseForm": "",
+    "genderNeutralWords": [
+      "Fachwissen",
+      "Expertise"
+    ]
+  },
+  "extremist": {
+    "word": "Extremist",
+    "genderBaseForm": "Extremist",
+    "genderNeutralWords": [
+      "radikalisierte Person"
     ]
   }
 }
