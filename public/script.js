@@ -1,9 +1,19 @@
-import genderDictionary from './dist/genderDictionary.json';
-
 let findings = [];
 let index = 0;
+let genderDictionary = {};
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('https://genderify.vercel.app/dist/genderDictionary.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        genderDictionary = await response.json();
+    } catch (error) {
+        console.error('Fehler beim Laden des Gender-Dictionaries:', error);
+        return;
+    }
+
     const textInput = document.getElementById('textInput');
     const genderChar = document.getElementById('genderChar');
     const analyzeButton = document.getElementById('analyze-button');
