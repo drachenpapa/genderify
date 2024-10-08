@@ -36,13 +36,11 @@ jobs:
         with:
           args: --sarif-file-output=snyk.sarif
 
-#      - name: Snyk Code test
-#        run: snyk code test --sarif > snyk-code.sarif # || true
-#        continue-on-error: true
-#        env:
-#          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-#        with:
-#          args: --sarif-file-output=snyk.sarif
+      - name: Snyk Code test
+        run: snyk code test --sarif > snyk.sarif # || true
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
       - name: Snyk Open Source monitor
         run: snyk monitor --all-projects
