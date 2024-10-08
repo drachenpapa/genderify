@@ -26,7 +26,7 @@ jobs:
           node-version: 20
 
       - name: Set up Snyk CLI
-        uses: snyk/actions/setup@0.4
+        uses: snyk/actions/setup@master
 
 #      - name: Run Snyk
 #        uses: snyk/actions/node@master
