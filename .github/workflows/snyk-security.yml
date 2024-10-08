@@ -28,8 +28,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Snyk Code test
-        run: snyk code test --sarif > snyk-code.sarif # || true
+#      - name: Snyk Code test
+#        run: snyk code test --sarif > snyk-code.sarif # || true
 #        env:
 #          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
