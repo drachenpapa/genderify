@@ -37,7 +37,7 @@ jobs:
           #args: --sarif-file-output=snyk.sarif
 
       - name: Snyk Code test
-        run: snyk code test > snyk.sarif
+        run: snyk code test --sarif > snyk.sarif
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
