@@ -28,16 +28,8 @@ jobs:
       - name: Set up Snyk CLI
         uses: snyk/actions/setup@master
 
-#      - name: Run Snyk
-        #uses: snyk/actions/node@master
-        #continue-on-error: true
-        #env:
-          #SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        #with:
-          #args: --sarif-file-output=snyk.sarif
-
       - name: Snyk Code test
-        run: snyk code test --sarif > snyk.sarif
+          run: snyk code test --sarif-file-output=snyk.sarif
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
