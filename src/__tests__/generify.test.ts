@@ -42,19 +42,30 @@ describe("Genderify Functions", () => {
 
   test("scanText correctly identifies gendered words", () => {
     scanText("This is a test sentence with he and she.");
-    expect(findings().length).toBeGreaterThan(0);
+    expect(findings().length).toBe(2);
     expect(findings()[0].word).toBe("he");
     expect(findings()[1].word).toBe("she");
   });
 
   test("replaceWordInDocument replaces the current word", async () => {
     scanText("This is a test sentence with he.");
-    await replaceWordInDocument("genderedWord");
-    expect(mockOffice.context.document.setSelectedDataAsync).toHaveBeenCalled();
+
+    jest.spyOn(mockOffice.context.document, 'getSelectedDataAsync').mockImplementation((coercionType, callback) => {
+      callback({
+        status: Office.AsyncResultStatus.Succeeded,
+        value: "This is a test sentence with he."
+      });
+    });
+    const mockRewriteDocument = jest.spyOn(mockOffice.context.document, 'setSelectedDataAsync');
+
+    (document.getElementById(InputIds.GenderedWord) as HTMLInputElement).value = "they";
+
+    await replaceWordInDocument(InputIds.GenderedWord);
+    expect(mockRewriteDocument).toHaveBeenCalledWith("This is a test sentence with they.", expect.any(Function));
   });
 
   test("removeFromFindings updates the findings list", () => {
-    setFindings([{ word: "he", index: 0 }]);
+    setFindings([{ word: "he", genderNeutralWords: ["they"], genderBaseForm: "he" }]);
     removeFromFindings();
     expect(findings().length).toBe(0);
   });

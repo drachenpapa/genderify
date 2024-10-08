@@ -1,20 +1,4 @@
-const genderDictionary = {
-    "akademiker": {
-        "word": "Akademiker",
-        "genderBaseForm": "Akademiker",
-        "genderNeutralWords": [
-            "Studierte",
-            "Personen mit Hochschulabschluss"
-        ]
-    },
-    "abbrecherquote": {
-        "word": "Abbrecherquote",
-        "genderBaseForm": "",
-        "genderNeutralWords": [
-            "Abbruchquote"
-        ]
-    }
-};
+import genderDictionary from './dist/genderDictionary.json';
 
 let findings = [];
 let index = 0;
@@ -45,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (findings.length > 0) {
-            updateFinding(findings[index]);
+            updateFinding();
         } else {
             resetUI();
         }
@@ -72,18 +56,19 @@ document.addEventListener('DOMContentLoaded', () => {
     prevButton.addEventListener('click', () => {
         if (index > 0) {
             index--;
-            updateFinding(findings[index]);
+            updateFinding();
         }
     });
 
     nextButton.addEventListener('click', () => {
         if (index < findings.length - 1) {
             index++;
-            updateFinding(findings[index]);
+            updateFinding();
         }
     });
 
-    function updateFinding(finding) {
+    function updateFinding() {
+        const finding = findings[index];
         foundWord.value = finding.word;
         const genderBaseForm = finding.genderBaseForm;
         const neutralWords = finding.genderNeutralWords;
@@ -110,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (index >= findings.length) {
                 index = findings.length - 1;
             }
-            updateFinding(findings[index]);
+            updateFinding();
         }
         updateNavButtons();
     }

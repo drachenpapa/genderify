@@ -79,6 +79,10 @@ module.exports = async (env, options) => {
               return dev ? content : content.toString().replace(new RegExp(urlDev, "g"), urlProd);
             },
           },
+          {
+            from: path.resolve(__dirname, "./src/taskpane/genderDictionary.json"),
+            to: path.resolve(__dirname, "public/dist")
+          }
         ],
       }),
       new HtmlWebpackPlugin({

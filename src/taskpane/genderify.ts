@@ -1,15 +1,17 @@
 import { ButtonIds, InputIds, SelectionIds } from "./enums";
 import GenderDictionary from "./genderDictionary.json";
 
-interface Finding {
+interface FindingType {
   word: string;
-  index: number;
+  genderNeutralWords: string[];
+  genderBaseForm?: string;
 }
 
-let _findings: Finding[] = [];
-let currentIndex = 0;
-
 export const findings = () => _findings;
+const genderDictionary: Record<string, FindingType> = GenderDictionary;
+
+let _findings: FindingType[] = [];
+let currentIndex = 0;
 
 let hostType: Office.HostType;
 
@@ -85,22 +87,21 @@ export function analyzeSelectedText() {
  * @param {string} text - The text to scan.
  */
 export function scanText(text: string) {
+  _findings = [];
+  currentIndex = 0;
+
+  const words = text.replace(/[.,;:!?()]*/g, "").toLowerCase().split(/\s+/);
   const foundWords = new Set<string>();
 
-  _findings = text.split(/\s+/).reduce((acc, word, index) => {
-    const cleanWord = word.replace(/[.,;:!?()]/g, "").toLowerCase();
-
-    if (GenderDictionary[cleanWord] && !foundWords.has(cleanWord)) {
-      foundWords.add(cleanWord);
-      acc.push({ word: cleanWord, index });
+  words.forEach(word => {
+    if (genderDictionary[word] && !foundWords.has(genderDictionary[word].word)) {
+      _findings.push(genderDictionary[word]);
+      foundWords.add(genderDictionary[word].word);
     }
-    return acc;
-  }, [] as Finding[]);
+  });
 
   if (_findings.length > 0) {
-    currentIndex = 0;
     updateSelectionMenu();
-    document.getElementById("selection").style.display = "block";
   } else {
     alert("Keine passenden Wörter gefunden.");
   }
@@ -111,28 +112,22 @@ export function scanText(text: string) {
  * It enables or disables buttons based on the current state of findings.
  */
 export function updateSelectionMenu() {
-  const { word } = _findings[currentIndex];
+  const find = _findings[currentIndex];
+
+  foundWordInput.value = find.word;
+
   genderNeutralWordSelect.innerHTML = "";
-
-  const dictionaryEntry = GenderDictionary[word];
-
-  foundWordInput.value = dictionaryEntry.word;
-
-  dictionaryEntry.genderNeutralWords.forEach((neutralWord: string) => {
+  find.genderNeutralWords.forEach((neutralWord: string) => {
     const option = document.createElement("option");
     option.value = neutralWord;
     option.text = neutralWord;
     genderNeutralWordSelect.appendChild(option);
   });
 
-  const genderedVariant = dictionaryEntry.genderBaseForm;
+  const genderedVariant = find.genderBaseForm;
   genderedWordInput.value = genderedVariant ? `${genderedVariant}${genderCharInput.value}innen` : "";
 
-  applyGenderNeutralButton.disabled = false;
-  genderNeutralWordSelect.disabled = false;
-  prevButton.disabled = currentIndex === 0;
-  nextButton.disabled = currentIndex === _findings.length - 1;
-  applyGenderedButton.disabled = !genderedVariant;
+  toggleButtons(false);
 }
 
 /**
@@ -149,7 +144,7 @@ export async function replaceWordInDocument(inputId: string) {
     await rewriteDocument(wordInput.value);
     removeFromFindings();
   } catch (error) {
-    alert(`Fehler beim Ersetzen des Wortes: ${error.message}`);
+    alert(`Fehler beim Ersetzen des Wortes: ${error instanceof Error ? error.message : 'Unbekannter Fehler'}`);
   }
 }
 
@@ -194,8 +189,9 @@ export function isAsyncSucceeded(result: Office.AsyncResult<any>): boolean {
  */
 export function removeFromFindings() {
   _findings.splice(currentIndex, 1);
+
   if (_findings.length === 0) {
-    disableButtonsAndClearInputs();
+    resetUI();
   } else {
     currentIndex = Math.min(currentIndex, _findings.length - 1);
     updateSelectionMenu();
@@ -228,7 +224,7 @@ export function goToNextMatch() {
  * Disables the buttons and clears the input fields.
  * This is used when there are no findings left.
  */
-function disableButtonsAndClearInputs() {
+function resetUI() {
   toggleButtons(true);
   clearInputs();
 }
@@ -241,6 +237,7 @@ function disableButtonsAndClearInputs() {
 function toggleButtons(disabled: boolean) {
   applyGenderNeutralButton.disabled = disabled;
   applyGenderedButton.disabled = disabled || !genderedWordInput.value;
+  genderNeutralWordSelect.disabled = disabled;
   prevButton.disabled = disabled || currentIndex === 0;
   nextButton.disabled = disabled || currentIndex === _findings.length - 1;
 }
@@ -300,6 +297,6 @@ Office.onReady((info) => {
   }
 });
 
-export const setFindings = (newFindings: Finding[]) => {
+export const setFindings = (newFindings: FindingType[]) => {
   _findings = newFindings;
 };
