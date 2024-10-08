@@ -1,49 +1,32 @@
 <p align="center"><img src="./assets/icon-128.png" alt="Logo"></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/license-MIT-yellow?style=flat-square" alt="License">&nbsp;
-  <img src="https://deploy-badge.vercel.app/vercel/genderify?style=flat-square" alt="Vercel">&nbsp;
-  <img src="https://img.shields.io/badge/snyk-monitored-00008b?logo=snyk&style=flat-square" alt="Snyk">
+  <img src="https://img.shields.io/badge/license-MIT-yellow?style=flat-square" alt="License">
+  <img src="https://deploy-badge.vercel.app/vercel/genderify?style=flat-square" alt="Vercel">
+  <img src="https://img.shields.io/badge/snyk-monitored-4C4A73?logo=snyk&style=flat-square" alt="Snyk">
+  <img src="https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovate&style=flat-square" alt="Renovate">
 </p>
 
-## Einleitung
-**Genderify** ist ein Projekt zur Unterstützung der geschlechtergerechten Sprache in digitalen Dokumenten, insbesondere in Microsoft Office-Anwendungen. Es bietet eine einfache Möglichkeit, gendergerechte Alternativen für häufig verwendete Begriffe bereitzustellen. Ziel ist es, eine inklusive Sprache zu fördern und die Sichtbarkeit aller Geschlechter in der Kommunikation zu erhöhen.
+## Genderify
+**Genderify** ist ein Open-Source-Projekt, das darauf abzielt, die geschlechtergerechte Sprache in digitalen Dokumenten zu unterstützen. Das Ziel des Projekts ist es, eine einfache und effektive Möglichkeit anzubieten, gendergerechte Alternativen für häufig verwendete Begriffe bereitzustellen. Durch die Verwendung von Genderify soll die Sichtbarkeit aller Geschlechter in der Kommunikation erhöht und eine inklusive Sprache gefördert werden.
 
-### Warum gendern?
-Gendern ist ein wichtiger Schritt, um die Gleichstellung der Geschlechter in der Sprache zu fördern. Viele Begriffe in der deutschen Sprache sind geschlechtsspezifisch und berücksichtigen nicht die Vielfalt der Geschlechteridentitäten. Durch gendergerechte Sprache können wir:
-- **Inklusivität fördern**: Alle Geschlechter ansprechen und Sichtbarkeit schaffen.
-- **Stereotypen abbauen**: Geschlechterrollen hinterfragen und aufbrechen.
-- **Bewusstsein schaffen**: Sensibilisierung für genderbezogene Themen in der Kommunikation.
+Gendergerechte Sprache ist ein entscheidender Schritt zur Förderung der Gleichstellung der Geschlechter in der Gesellschaft. Viele Begriffe in der deutschen Sprache sind geschlechtsspezifisch und spiegeln nicht die Vielfalt der Geschlechteridentitäten wider. Daher ist es von großer Bedeutung, die Sprache anzupassen, um alle Menschen anzusprechen. Durch die Verwendung gendergerechter Sprache wird Inklusivität gefördert, indem alle Geschlechter angesprochen und Sichtbarkeit sowie Zugehörigkeit geschaffen werden. 
 
-## Funktionen
-- **Einfache Integration**: Fügen Sie Genderify in alle Microsoft Office-Anwendungen ein.
-- **Vorschläge für gendergerechte Sprache**: Erhalten Sie Alternativen zu geschlechtsspezifischen Begriffen.
-- **Benutzerfreundlich**: Einfach zu bedienen, auch für Nicht-Techniker.
-
-## Beitrag
+## Mitwirkung
 Beiträge sind willkommen! Wenn Sie eine Verbesserung oder neue Funktion hinzufügen möchten, [erstellen Sie ein Issue](https://github.com/drachenpapa/zatacka/issues/new/choose) oder einen Pull-Request.
 
 ## Lizenz
-Dieses Projekt steht unter der MIT-Lizenz. Weitere Informationen finden Sie in der Datei [LICENSE](LICENSE).
+Dieses Projekt ist unter der MIT-Lizenz lizenziert. Siehe die [LICENSE](LICENSE)-Datei für weitere Informationen.
 
 ---
 
-## Introduction
-**Genderify** is a project aimed at supporting gender-inclusive language in digital documents, particularly within Microsoft Office applications. It provides a simple way to offer gender-neutral alternatives for commonly used terms. The goal is to promote inclusive language and increase the visibility of all genders in communication.
+## Genderify
+**Genderify** is an open-source project aimed at supporting gender-inclusive language in digital documents. The goal of the project is to provide a simple and effective way to offer gender-neutral alternatives for commonly used terms. By using Genderify, the visibility of all genders in communication is increased, and inclusive language is promoted.
 
-### Why Gendering?
-Gendering is an important step towards promoting gender equality in language. Many terms in the German language are gender-specific and do not take into account the diversity of gender identities. By using gender-inclusive language, we can:
-- **Promote Inclusivity**: Address all genders and create visibility.
-- **Break Down Stereotypes**: Question and dismantle traditional gender roles.
-- **Raise Awareness**: Increase sensitivity to gender-related issues in communication.
-
-## Features
-- **Easy Integration**: Integrate Genderify into all Microsoft Office applications.
-- **Suggestions for Gender-Inclusive Language**: Get alternatives to gender-specific terms.
-- **User-Friendly**: Simple to use, even for non-technical users.
+Gender-inclusive language is a crucial step towards promoting gender equality in society. Many terms in the German language are gender-specific and do not reflect the diversity of gender identities. Therefore, it is of great importance to adapt language to address all individuals. By using gender-inclusive language, inclusivity is fostered, as all genders are addressed, creating visibility and a sense of belonging.
 
 ## Contribution
-Contributions are welcome! Please [open an issue](https://github.com/drachenpapa/zatacka/issues/new/choose) or create a pull request.
+Contributions are welcome! If you would like to add an improvement or a new feature, please [open an issue](https://github.com/drachenpapa/zatacka/issues/new/choose) or create a pull request.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
