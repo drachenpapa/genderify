@@ -6,13 +6,14 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
 jobs:
-  snyk:
-    name: Run Snyk Security
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
+  snyk_code:
+    name: Run Snyk Code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,8 +25,27 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           command: code test
-          args: --sarif-file-output=snyk.sarif
+          args: --sarif-file-output=snykCode.sarif
       - name: Upload results
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: snyk.sarif
+          sarif_file: snykCode.sarif
+
+  snyk_open_source:
+    name: Run Snyk Open Source
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run Snyk Open Source
+        uses: snyk/actions/maven@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test
+          args: --sarif-file-output=snykOS.sarif
+      - name: Upload results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: snykOS.sarif
