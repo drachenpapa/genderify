@@ -50,7 +50,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const finding = findings[index];
         const genderedVariant = genderedWord.value;
 
-        textInput.value = inputText.replace(new RegExp(`\\b${finding.word}\\b`, 'gi'), genderedVariant);
+        const sanitizedWord = sanitize(finding.word);
+
+        textInput.value = inputText.replace(new RegExp(`\\b${sanitizedWord}\\b`, 'gi'), genderedVariant);
         updateFindingsAfterApply();
     });
 
@@ -59,7 +61,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const finding = findings[index];
         const neutralVariant = genderNeutralWord.value;
 
-        textInput.value = inputText.replace(new RegExp(`\\b${finding.word}\\b`, 'gi'), neutralVariant);
+        const sanitizedWord = sanitize(finding.word);
+
+        textInput.value = inputText.replace(new RegExp(`\\b${sanitizedWord}\\b`, 'gi'), neutralVariant);
         updateFindingsAfterApply();
     });
 
@@ -83,7 +87,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         const genderBaseForm = finding.genderBaseForm;
         const neutralWords = finding.genderNeutralWords;
 
-        genderNeutralWord.innerHTML = neutralWords.map(neutral => `<option value="${neutral}">${neutral}</option>`).join('');
+        genderNeutralWord.innerHTML = '';
+        neutralWords.forEach(neutral => {
+            const option = document.createElement('option');
+            option.value = neutral;
+            option.textContent = neutral;
+            genderNeutralWord.appendChild(option);
+        });
 
         if (genderBaseForm) {
             genderedWord.value = genderBaseForm + genderChar.value + 'innen';
@@ -108,6 +118,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             updateFinding();
         }
         updateNavButtons();
+    }
+
+    function sanitize(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
     function resetUI() {
