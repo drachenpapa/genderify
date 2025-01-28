@@ -9,14 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Submit Dependency Snapshot
         uses: advanced-security/maven-dependency-submission-action@v4
-      - uses: advanced-security/sbom-generator-action@v0.0.2
+      - name: Generate SBOM
+        uses: advanced-security/sbom-generator-action@v0.0.2
         id: sbom
         env:
           GITHUB_TOKEN: ${{ github.token }}
-      - uses: actions/upload-artifact@v4
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
         with:
           name: "SBOM"
           path: ${{ steps.sbom.outputs.fileName }}
