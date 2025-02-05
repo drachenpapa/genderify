@@ -51,7 +51,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "office-addin-cli": "^2.0.0",
     "office-addin-debugging": "^6.0.0",
-    "office-addin-dev-certs": "^1.13.3",
+    "office-addin-dev-certs": "^2.0.0",
     "office-addin-lint": "^2.3.3",
     "office-addin-manifest": "^1.13.3",
     "office-addin-prettier-config": "^2.0.0",
