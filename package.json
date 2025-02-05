@@ -49,7 +49,7 @@
     "html-webpack-plugin": "^5.6.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "office-addin-cli": "^1.6.3",
+    "office-addin-cli": "^2.0.0",
     "office-addin-debugging": "^5.0.16",
     "office-addin-dev-certs": "^1.13.3",
     "office-addin-lint": "^2.3.3",
