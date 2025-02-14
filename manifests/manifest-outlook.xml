@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MailApp">
+  <Id>123e4567-e89b-12d3-a456-426614174000</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Your Provider</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Genderify"/>
+  <Description DefaultValue="An add-in to provide gender-neutral alternatives."/>
+  <IconUrl DefaultValue="https://genderify.vercel.app/dist/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://genderify.vercel.app/dist/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="Mailbox"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://genderify.vercel.app/dist/genderify.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+    <Form xsi:type="ItemEdit">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://genderify.vercel.app/dist/genderify.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteMailbox</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Read"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides Version="1.0">
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://genderify.vercel.app/dist/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://genderify.vercel.app/dist/assets/icon-32.png"/>
+        <bt:Image id="Icon.64x64" DefaultValue="https://genderify.vercel.app/dist/assets/icon-64.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://genderify.vercel.app/dist/assets/icon-80.png"/>
+        <bt:Image id="Icon.128x128" DefaultValue="https://genderify.vercel.app/dist/assets/icon-128.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://genderify.vercel.app/dist/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://genderify.vercel.app/dist/genderify.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Get Started with Genderify!"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Genderify"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Genderify"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="The Genderify add-in has been successfully loaded. Go to the 'Home' tab and click 'Genderify' to get started."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click here to get gender-neutral alternatives."/>
+      </bt:LongStrings>
+    </Resources>
+    <VersionOverrides Version="1.0">
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <FunctionFile resid="Commands.Url"/>
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="CommandsGroup">
+                  <Label resid="CommandsGroup.Label"/>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="64" resid="Icon.64x64"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                    <bt:Image size="128" resid="Icon.128x128"/>
+                  </Icon>
+                  <Control xsi:type="Button" id="TaskpaneButton">
+                    <Label resid="TaskpaneButton.Label"/>
+                    <Supertip>
+                      <Title resid="TaskpaneButton.Label"/>
+                      <Description resid="TaskpaneButton.Tooltip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16x16"/>
+                      <bt:Image size="32" resid="Icon.32x32"/>
+                      <bt:Image size="64" resid="Icon.64x64"/>
+                      <bt:Image size="80" resid="Icon.80x80"/>
+                      <bt:Image size="128" resid="Icon.128x128"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url"/>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
