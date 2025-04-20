@@ -11,7 +11,8 @@
   <SupportUrl DefaultValue="https://github.com/drachenpapa/genderify/blob/main/SUPPORT.md"/>
   <Hosts>
     <Host Name="Document"/>
-    <Host Name="Presentation" />
+    <Host Name="Presentation"/>
+    <Host Name="Workbook"/>
   </Hosts>
   <DefaultSettings>
     <SourceLocation DefaultValue="https://genderify.vercel.app/dist/genderify.html"/>
@@ -62,6 +63,48 @@
         </DesktopFormFactor>
       </Host>
       <Host xsi:type="Presentation">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="CommandsGroup">
+                <Label resid="CommandsGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="64" resid="Icon.64x64"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                  <bt:Image size="128" resid="Icon.128x128"/>
+                </Icon>
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label"/>
+                    <Description resid="TaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="64" resid="Icon.64x64"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                    <bt:Image size="128" resid="Icon.128x128"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+      <Host xsi:type="Workbook">
         <DesktopFormFactor>
           <GetStarted>
             <Title resid="GetStarted.Title"/>
