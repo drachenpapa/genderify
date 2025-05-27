@@ -18,6 +18,8 @@
     "lint": "office-addin-lint check",
     "lint:fix": "office-addin-lint fix",
     "prettier": "office-addin-lint prettier",
+    "build:office": "webpack --mode production --env target=office",
+    "build:outlook": "webpack --mode production --env target=outlook",
     "signin": "office-addin-dev-settings m365-account login",
     "signout": "office-addin-dev-settings m365-account logout",
     "start": "office-addin-debugging start manifests/manifest-office.xml",

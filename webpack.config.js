@@ -73,11 +73,11 @@ module.exports = async (env, options) => {
             to: "assets/[name][ext][query]",
           },
           {
-            from: "manifest*.xml",
-            to: "[name][ext]",
+            from: `manifests/manifest-${env.target || 'office'}.xml`,
+            to: `manifest-${env.target || 'office'}.xml`,
             transform(content) {
               return dev ? content : content.toString().replace(new RegExp(urlDev, "g"), urlProd);
-            },
+            }
           },
           {
             from: path.resolve(__dirname, "./src/taskpane/genderDictionary.json"),

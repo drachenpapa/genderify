@@ -7,8 +7,8 @@ on:
     branches: ["main"]
 
 jobs:
-  build-and-test:
-    name: Build and Test
+  build-and-test-office:
+    name: Build & Test – Office Add-in
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -20,6 +20,23 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build
-        run: npm run build
+        run: run build:office
+      - name: Test
+        run: npm test
+
+  build-and-test-outlook:
+    name: Build & Test – Outlook Add-in
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: run build:outlook
       - name: Test
         run: npm test
