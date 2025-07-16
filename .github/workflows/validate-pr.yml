@@ -1,4 +1,4 @@
-name: Validate pull request
+name: PR Validation
 
 on:
   pull_request:
@@ -14,7 +14,7 @@ jobs:
     name: Lint pull request title
     runs-on: ubuntu-latest
     steps:
-      - name: Lint pull request title
+      - name: Lint title
         uses: amannn/action-semantic-pull-request@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

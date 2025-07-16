@@ -13,12 +13,12 @@ permissions:
 
 jobs:
   snyk_code:
-    name: Run Snyk Code
+    name: Static Application Security Testing (SAST)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Run Snyk Code
+      - name: Scan with SnykCode
         uses: snyk/actions/node@master
         continue-on-error: true
         env:
@@ -32,13 +32,13 @@ jobs:
           sarif_file: snykCode.sarif
 
   snyk_open_source:
-    name: Run Snyk Open Source
+    name: Software Composition Analysis (SCA)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Run Snyk Open Source
-        uses: snyk/actions/maven@master
+      - name: Scan with Snyk Open Source
+        uses: snyk/actions/node@master
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
