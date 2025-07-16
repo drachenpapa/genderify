@@ -28,7 +28,7 @@ jobs:
       - name: Verify signed SBOMs
         run: |
           cosign verify-blob --certificate sbom.spdx.json.cert \
-          --certificate-identity "https://github.com/drachenpapa/zatacka/.github/workflows/generate-sbom.yml@refs/heads/main" \
+          --certificate-identity "https://github.com/drachenpapa/genderify/.github/workflows/generate-sbom.yml@refs/heads/main" \
           --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
           --signature sbom.spdx.json.sig \
           sbom.spdx.json
