@@ -41,7 +41,6 @@
   "devDependencies": {
     "@babel/core": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
-    "@types/form-data": "^2.5.2",
     "@types/jest": "^30.0.0",
     "@types/office-js": "^1.0.503",
     "@types/office-runtime": "^1.0.35",
