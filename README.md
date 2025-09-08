@@ -1,4 +1,7 @@
-<p align="center"><img src="./assets/icon-128.png" alt="Logo"></p>
+<h1 align="center">
+    <img src="docs/assets/logo.png" alt="Genderify project logo" height="100px" align="center">
+    Genderify
+</h1>
 
 <p align="center">
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-yellow?style=flat-square" alt="License"></a>
