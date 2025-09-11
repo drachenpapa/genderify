@@ -16,7 +16,8 @@ No distinction is made between singular and plural forms with the same spelling.
 In addition to the Office add-in, Genderify is also available as an [online tool](https://genderify.vercel.app/).
 
 <div class="screenshot-gallery">
-  <img src="assets/screenshots/word.png" alt="Word Screenshot" class="screenshot-thumb" onclick="openLightbox('assets/screenshots/word.png')" />
+  <img src="assets/screenshots/add-in.png" alt="Screenshot of the add-in" class="screenshot-thumb" onclick="openLightbox('assets/screenshots/add-in.png')" />
+  <img src="assets/screenshots/choices.png" alt="Screenshot of an opened choicebox" class="screenshot-thumb" onclick="openLightbox('assets/screenshots/choices.png')" />
 </div>
 
 <div id="lightbox-overlay" style="display:none;" onclick="closeLightbox(event)">

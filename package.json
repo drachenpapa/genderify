@@ -72,5 +72,8 @@
   "prettier": "office-addin-prettier-config",
   "browserslist": [
     "last 2 versions"
-  ]
+  ],
+  "overrides": {
+    "tmp": ">=0.2.4"
+  }
 }
