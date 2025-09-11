@@ -2,17 +2,24 @@
 layout: default
 ---
 
-**Genderify** is an open-source project aimed at supporting gender-inclusive language in digital documents. The goal of
-the project is to provide a simple and effective way to offer gender-neutral alternatives for commonly used terms. By
-using Genderify, the visibility of all genders in communication is increased, and inclusive language is promoted.
+_Genderify_ is a Microsoft Office add-in that aims to support gender-inclusive language in digital documents. The goal of the
+project is to provide a simple and effective way to offer gender-neutral alternatives for commonly used terms.
 
 Gender-inclusive language is a crucial step in promoting gender equality in society. Many terms in the German language
 are gender-specific and do not reflect the diversity of gender identities. Therefore, it is essential to adapt the
-language to address all individuals. By using gender-inclusive language, inclusivity is promoted, ensuring that all
-genders are addressed, creating visibility and a sense of belonging.
+language to address all individuals.
 
-This tool only suggests gender-neutral alternatives for german terms. Grammatical rules and contexts are not considered!
-When using a gender-neutral alternative, it may happen that the sentence structure is no longer correct. No distinction
-is made between singular and plural forms with the same spelling. The vocabulary provided is not exhaustive. If there
-are errors or suggestions for improvement, they can be submitted in
-an [issue](https://github.com/drachenpapa/genderify/issues/new/choose) or a pull request. Contributions are welcome!
+Please be aware, that the vocabulary is not exhaustive and that only suggestions for german terms are provided.
+Grammatical rules and contexts are not considered, so it may happen that the sentence structure is no longer correct.
+No distinction is made between singular and plural forms with the same spelling.
+
+In addition to the Office add-in, Genderify is also available as an [online tool](https://genderify.vercel.app/).
+
+<div class="screenshot-gallery">
+  <img src="assets/screenshots/word.png" alt="Word Screenshot" class="screenshot-thumb" onclick="openLightbox('assets/screenshots/word.png')" />
+</div>
+
+<div id="lightbox-overlay" style="display:none;" onclick="closeLightbox(event)">
+  <span id="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+  <img id="lightbox-img" src="" alt="Screenshot" />
+</div>

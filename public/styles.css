@@ -13,6 +13,10 @@ header {
     margin-bottom: 20px;
 }
 
+header img {
+    vertical-align: middle
+}
+
 main {
     width: 100%;
     display: flex;
@@ -69,6 +73,7 @@ button:hover {
 #inputContainer {
     flex: 1;
     margin-right: 20px;
+    min-height: 100px;
 }
 
 #textInput {
