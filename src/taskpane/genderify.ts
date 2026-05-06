@@ -162,7 +162,7 @@ async function rewriteDocument(replacementWord: string) {
 
   if (!isAsyncSucceeded(result)) return;
 
-  const updatedText = (result.value as string).replace(new RegExp(`\\b${wordToReplace}\\b`, "gi"), replacementWord);
+  const updatedText = (result.value as string).replace(new RegExp(String.raw`\b${wordToReplace}\b`, "gi"), replacementWord);
 
   const setAsyncResult = await new Promise<Office.AsyncResult<any>>((resolve) => {
     setSelectedData(updatedText, (asyncResult) => resolve(asyncResult));
@@ -258,10 +258,9 @@ function clearInputs() {
  * @param {(result: Office.AsyncResult<any>) => void} resolve - The callback function to handle the result.
  */
 function getSelectedData(resolve: (result: Office.AsyncResult<any>) => void) {
-  switch (hostType) {
-    case Office.HostType.Outlook:
-      return Office.context.mailbox.item.body.getAsync(Office.CoercionType.Text, (asyncResult) => resolve(asyncResult));
-    default:
+  if (hostType == Office.HostType.Outlook) {
+      return Office.context.mailbox.item?.body.getAsync(Office.CoercionType.Text, (asyncResult) => resolve(asyncResult));
+  } else {
       return Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, (asyncResult) => resolve(asyncResult));
   }
 }
@@ -273,11 +272,10 @@ function getSelectedData(resolve: (result: Office.AsyncResult<any>) => void) {
  * @param {(result: Office.AsyncResult<any>) => void} resolve - The callback function to handle the result.
  */
 function setSelectedData(updatedText: string, resolve: (result: Office.AsyncResult<any>) => void) {
-  switch (hostType) {
-    case Office.HostType.Outlook:
-      return Office.context.mailbox.item.body.setAsync(updatedText, (asyncResult) => resolve(asyncResult));
-    default:
-      return Office.context.document.setSelectedDataAsync(updatedText, (asyncResult) => resolve(asyncResult));
+  if (hostType == Office.HostType.Outlook) {
+    return Office.context.mailbox.item?.body.setAsync(updatedText, (asyncResult) => resolve(asyncResult));
+  } else {
+    return Office.context.document.setSelectedDataAsync(updatedText, (asyncResult) => resolve(asyncResult));
   }
 }
 

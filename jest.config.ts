@@ -4,7 +4,14 @@ const config: Config = {
     preset: 'ts-jest',
     testEnvironment: 'jsdom',
     transform: {
-        '^.+\\.ts$': 'ts-jest',
+        '^.+\\.ts$': ['ts-jest', {
+            tsconfig: {
+                rootDir: './src',
+                outDir: './dist',
+                noEmit: false,
+                ignoreDeprecations: '6.0',
+            },
+        }],
     },
     moduleFileExtensions: ['ts', 'js', 'json', 'node'],
     testPathIgnorePatterns: ['/node_modules/', '/dist/'],
