@@ -77,6 +77,6 @@
   "overrides": {
     "tmp": ">=0.2.4",
     "serialize-javascript": ">=7.0.5",
-    "uuid": "8.3.2"
+    "uuid": "14.0.0"
   }
 }
