@@ -1,1 +1,11 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Project Documentation
+    url: https://drachenpapa.github.io/genderify
+    about: Read project documentation and usage details.
+  - name: Support & Help
+    url: https://github.com/drachenpapa/genderify/blob/main/SUPPORT.md
+    about: Get help and see where to report bugs or request features.
+  - name: Security Policy
+    url: https://github.com/drachenpapa/genderify/blob/main/SECURITY.md
+    about: Report potential security issues privately.

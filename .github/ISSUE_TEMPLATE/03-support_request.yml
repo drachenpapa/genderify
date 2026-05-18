@@ -1,0 +1,37 @@
+name: Support request
+description: Ask for help or seek clarification about the project
+title: "[SUPPORT] "
+labels: ["question"]
+assignees:
+  - drachenpapa
+body:
+  - type: markdown
+    attributes:
+      value: "Before opening a support request, please check [Support & Help](https://github.com/drachenpapa/genderify/blob/main/SUPPORT.md) and existing issues."
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Briefly describe what you need help with or what you don't understand.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: If applicable, list the steps you took that led to your confusion or problem.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: If applicable, describe what you expected to happen.
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: If applicable, describe what actually happened instead.
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional information
+      description: Add any other context or screenshots about the support request here.

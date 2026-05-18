@@ -1,0 +1,60 @@
+* text=auto eol=lf
+
+# Source files
+*.java        text
+*.py          text
+*.js          text
+*.ts          text
+*.jsx         text
+*.tsx         text
+*.go          text
+*.rs          text
+
+# Windows script files - enforce CRLF line endings
+*.bat         text eol=crlf
+*.cmd         text eol=crlf
+*.ps1         text eol=crlf
+
+# Config & data files
+*.json        text
+*.yaml        text
+*.yml         text
+*.xml         text
+*.toml        text
+*.cff         text
+*.properties  text
+*.gradle      text
+*.gradle.kts  text
+
+# Web files
+*.html        text
+*.css         text
+*.scss        text
+*.svg         text
+
+# Documentation
+*.md          text
+*.txt         text
+
+# Git & editor config
+.gitignore       text
+.gitattributes   text
+.editorconfig    text
+
+# Binary files - disable line ending conversion and text diffs
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.webp    binary
+*.jar     binary
+*.war     binary
+*.ear     binary
+*.class   binary
+*.zip     binary
+*.tar     binary
+*.gz      binary
+
+# GitHub Linguist - exclude generated/vendored assets from language stats
+docs/assets/** linguist-vendored
