@@ -5,28 +5,33 @@
 
 /* global Office */
 
+const ACTION_NOTIFICATION_ID = "ActionPerformanceNotification";
+
 Office.onReady(() => {
-  // If needed, Office.js is ready to be called.
+  // Office.js is ready.
 });
 
-/**
- * Shows a notification when the add-in command is executed.
- * @param event
- */
-function action(event: Office.AddinCommands.Event) {
-  const message: Office.NotificationMessageDetails = {
+function showInfoNotification(message: string): void {
+  const notification: Office.NotificationMessageDetails = {
     type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
-    message: "Performed action.",
+    message,
     icon: "Icon.80x80",
-    persistent: true,
+    persistent: false,
   };
 
-  // Show a notification message.
-  Office.context.mailbox?.item?.notificationMessages?.replaceAsync("ActionPerformanceNotification", message);
-
-  // Be sure to indicate when the add-in command function is complete.
-  event.completed();
+  Office.context.mailbox?.item?.notificationMessages?.replaceAsync(ACTION_NOTIFICATION_ID, notification);
 }
 
-// Register the function with Office.
+/**
+ * Handles ribbon command execution.
+ */
+function action(event: Office.AddinCommands.Event): void {
+  try {
+    showInfoNotification("Genderify ist bereit.");
+  } finally {
+    // Always complete, even if mailbox context is not available.
+    event.completed();
+  }
+}
+
 Office.actions.associate("action", action);

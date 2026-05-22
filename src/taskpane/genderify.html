@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://appsforoffice.microsoft.com; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none';" />
         <title>Genderify</title>
         <link rel="stylesheet" href="genderify.css" />
         <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
@@ -22,6 +23,8 @@
         <div class="analyzis-container">
             <button class="analyze-button" id="analyze-button">🔍 Überprüfen</button>
         </div>
+
+        <div id="status-message" class="status-message" aria-live="polite"></div>
 
         <hr />
 

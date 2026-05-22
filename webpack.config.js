@@ -15,9 +15,10 @@ async function getHttpsOptions() {
 
 module.exports = async (env, options) => {
   const dev = options.mode === "development";
+  const devOrigin = new URL(urlDev).origin;
 
   return {
-    devtool: "source-map",
+    devtool: dev ? "source-map" : false,
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: path.resolve(__dirname, './src/taskpane/genderify.ts'),
@@ -93,7 +94,7 @@ module.exports = async (env, options) => {
     ],
     devServer: {
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": devOrigin,
       },
       server: {
         type: "https",

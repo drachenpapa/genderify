@@ -1,67 +1,81 @@
-import { ButtonIds, InputIds, SelectionIds } from "./enums";
+import { InputIds, SelectionIds } from "./enums";
 import GenderDictionary from "./genderDictionary.json";
+import { getSelectedText, setSelectedText } from "./officeClient";
+import {
+  findings,
+  getCurrentFinding,
+  moveToNextFinding,
+  moveToPreviousFinding,
+  removeCurrentFinding,
+  setFindings,
+  setHostType,
+  state,
+} from "./stateStore";
+import { buildGenderedVariant, collectFindings, replaceWholeWord } from "./textProcessing";
+import type { FindingType } from "./types";
+import {
+  bindTaskpaneEventListeners,
+  clearInputs,
+  clearStatus,
+  createDomRefs,
+  type DomRefs,
+  hasRequiredDomElements,
+  renderFinding,
+  showStatus,
+  toggleButtons,
+} from "./ui";
 
-interface FindingType {
-  word: string;
-  genderNeutralWords: string[];
-  genderBaseForm?: string;
-}
+export { findings, state };
 
-export const findings = () => _findings;
 const genderDictionary: Record<string, FindingType> = GenderDictionary;
 
-let _findings: FindingType[] = [];
-let currentIndex = 0;
+let domRefs: DomRefs;
 
-let hostType: Office.HostType;
+function ensureDomRefs(): boolean {
+  if (domRefs && areDomRefsConnected(domRefs)) {
+    return true;
+  }
 
-let applyGenderNeutralButton: HTMLButtonElement;
-let applyGenderedButton: HTMLButtonElement;
-let prevButton: HTMLButtonElement;
-let nextButton: HTMLButtonElement;
+  if (!hasRequiredDomElements()) {
+    return false;
+  }
 
-let genderCharInput: HTMLInputElement;
-let foundWordInput: HTMLInputElement;
-let genderedWordInput: HTMLInputElement;
+  domRefs = createDomRefs();
+  return true;
+}
 
-let genderNeutralWordSelect: HTMLSelectElement;
+function areDomRefsConnected(nextDomRefs: DomRefs): boolean {
+  return [
+    nextDomRefs.applyGenderNeutralButton,
+    nextDomRefs.applyGenderedButton,
+    nextDomRefs.prevButton,
+    nextDomRefs.nextButton,
+    nextDomRefs.genderCharInput,
+    nextDomRefs.foundWordInput,
+    nextDomRefs.genderedWordInput,
+    nextDomRefs.genderNeutralWordSelect,
+    nextDomRefs.statusMessage,
+  ].every((element) => element.isConnected);
+}
 
 /**
  * Main function that runs when the Office app is ready.
  * It initializes the setup for HTML elements and event listeners.
  */
 export async function setup() {
-  setupHtmlElements();
-  setupEventListeners();
+  domRefs = createDomRefs();
+  bindTaskpaneEventListeners(domRefs, {
+    analyzeSelectedText,
+    applyGenderNeutral: () => replaceWordInDocument(SelectionIds.GenderNeutralWord),
+    applyGendered: () => replaceWordInDocument(InputIds.GenderedWord),
+    goToPreviousMatch,
+    goToNextMatch,
+  });
 }
 
-/**
- * Sets up HTML elements by assigning them to global variables.
- * This includes buttons, inputs, and select elements used in the UI.
- */
-export function setupHtmlElements() {
-  applyGenderNeutralButton = document.getElementById(ButtonIds.ApplyGenderNeutral) as HTMLButtonElement;
-  applyGenderedButton = document.getElementById(ButtonIds.ApplyGendered) as HTMLButtonElement;
-  prevButton = document.getElementById(ButtonIds.PrevButton) as HTMLButtonElement;
-  nextButton = document.getElementById(ButtonIds.NextButton) as HTMLButtonElement;
-
-  genderCharInput = document.getElementById(InputIds.GenderChar) as HTMLInputElement;
-  foundWordInput = document.getElementById(InputIds.FoundWord) as HTMLInputElement;
-  genderedWordInput = document.getElementById(InputIds.GenderedWord) as HTMLInputElement;
-
-  genderNeutralWordSelect = document.getElementById(SelectionIds.GenderNeutralWord) as HTMLSelectElement;
-}
-
-/**
- * Adds event listeners to the HTML buttons.
- * Each button is assigned a specific handler function that will be called on click.
- */
-function setupEventListeners() {
-  document.getElementById(ButtonIds.AnalyzeButton)?.addEventListener("click", analyzeSelectedText);
-  document.getElementById(ButtonIds.ApplyGenderNeutral)?.addEventListener("click", () => replaceWordInDocument("genderNeutralWord"));
-  document.getElementById(ButtonIds.ApplyGendered)?.addEventListener("click", () => replaceWordInDocument("genderedWord"));
-  document.getElementById(ButtonIds.PrevButton)?.addEventListener("click", goToPreviousMatch);
-  document.getElementById(ButtonIds.NextButton)?.addEventListener("click", goToNextMatch);
+function getAsyncErrorMessage<T>(result: Office.AsyncResult<T>): string {
+  const officeError = (result as Office.AsyncResult<T> & { error?: Office.Error }).error;
+  return officeError?.message ?? "Unbekannter Fehler";
 }
 
 /**
@@ -69,14 +83,19 @@ function setupEventListeners() {
  * If the text is successfully retrieved, the scanText function is called
  * to look for gender-specific words.
  */
-export function analyzeSelectedText() {
-  getSelectedData((result) => {
-    if (result.status === Office.AsyncResultStatus.Succeeded) {
-      scanText(result.value as string);
+export async function analyzeSelectedText() {
+  clearStatus(domRefs);
+
+  try {
+    const result = await getSelectedText(state.hostType);
+    if (isAsyncSucceeded(result)) {
+      scanText(result.value);
     } else {
-      alert(`Fehler beim Abrufen des ausgewählten Textes: ${result.error.message}`);
+      showStatus(domRefs, `Fehler beim Abrufen des ausgewählten Textes: ${getAsyncErrorMessage(result)}`, "error");
     }
-  });
+  } catch (error) {
+    showStatus(domRefs, `Fehler beim Abrufen des ausgewählten Textes: ${error instanceof Error ? error.message : "Unbekannter Fehler"}`, "error");
+  }
 }
 
 /**
@@ -87,23 +106,22 @@ export function analyzeSelectedText() {
  * @param {string} text - The text to scan.
  */
 export function scanText(text: string) {
-  _findings = [];
-  currentIndex = 0;
+  setFindings(collectFindings(text, genderDictionary));
 
-  const words = text.replace(/[.,;:!?()]*/g, "").toLowerCase().split(/\s+/);
-  const foundWords = new Set<string>();
+  const hasDom = ensureDomRefs();
 
-  words.forEach(word => {
-    if (genderDictionary[word] && !foundWords.has(genderDictionary[word].word)) {
-      _findings.push(genderDictionary[word]);
-      foundWords.add(genderDictionary[word].word);
+  if (findings().length > 0) {
+    if (!hasDom) {
+      return;
     }
-  });
 
-  if (_findings.length > 0) {
+    clearStatus(domRefs);
     updateSelectionMenu();
   } else {
-    alert("Keine passenden Wörter gefunden.");
+    if (hasDom) {
+      showStatus(domRefs, "Keine passenden Wörter gefunden.");
+      resetUI();
+    }
   }
 }
 
@@ -112,39 +130,38 @@ export function scanText(text: string) {
  * It enables or disables buttons based on the current state of findings.
  */
 export function updateSelectionMenu() {
-  const find = _findings[currentIndex];
+  if (!ensureDomRefs()) {
+    return;
+  }
 
-  foundWordInput.value = find.word;
-
-  genderNeutralWordSelect.innerHTML = "";
-  find.genderNeutralWords.forEach((neutralWord: string) => {
-    const option = document.createElement("option");
-    option.value = neutralWord;
-    option.text = neutralWord;
-    genderNeutralWordSelect.appendChild(option);
-  });
+  const find = getCurrentFinding();
+  if (!find) {
+    resetUI();
+    return;
+  }
 
   const genderedVariant = find.genderBaseForm;
-  genderedWordInput.value = genderedVariant ? `${genderedVariant}${genderCharInput.value}innen` : "";
+  const renderedGenderedVariant = buildGenderedVariant(genderedVariant, domRefs.genderCharInput.value);
 
-  toggleButtons(false);
+  renderFinding(domRefs, find, renderedGenderedVariant);
+  toggleButtons(domRefs, false, state.currentIndex, findings().length, Boolean(renderedGenderedVariant));
 }
 
 /**
  * Applies the selected word replacement in the document.
  *
- * @param {string} inputId - The ID of the input field containing the replacement word.
+ * @param {InputIds | SelectionIds} inputId - The ID of the input/select element containing the replacement word.
  * This function handles the replacement and updates the findings list.
  */
-export async function replaceWordInDocument(inputId: string) {
-  const wordInput = document.getElementById(inputId) as HTMLInputElement;
-  if (!wordInput.value) return;
+export async function replaceWordInDocument(inputId: InputIds | SelectionIds) {
+  const replacementSource = document.getElementById(inputId) as HTMLInputElement | HTMLSelectElement | null;
+  if (!replacementSource?.value) return;
 
   try {
-    await rewriteDocument(wordInput.value);
+    await rewriteDocument(replacementSource.value);
     removeFromFindings();
   } catch (error) {
-    alert(`Fehler beim Ersetzen des Wortes: ${error instanceof Error ? error.message : 'Unbekannter Fehler'}`);
+    showStatus(domRefs, `Fehler beim Ersetzen des Wortes: ${error instanceof Error ? error.message : "Unbekannter Fehler"}`, "error");
   }
 }
 
@@ -154,32 +171,32 @@ export async function replaceWordInDocument(inputId: string) {
  * @param {string} replacementWord - The word to replace the current finding with.
  */
 async function rewriteDocument(replacementWord: string) {
-  const wordToReplace = _findings[currentIndex].word;
+  const currentFinding = getCurrentFinding();
+  if (!currentFinding) {
+    throw new Error("Kein aktiver Treffer vorhanden.");
+  }
 
-  const result = await new Promise<Office.AsyncResult<any>>((resolve) => {
-    getSelectedData((asyncResult) => resolve(asyncResult));
-  });
+  const wordToReplace = currentFinding.word;
 
-  if (!isAsyncSucceeded(result)) return;
+  const result = await getSelectedText(state.hostType);
 
-  const updatedText = (result.value as string).replace(new RegExp(String.raw`\b${wordToReplace}\b`, "gi"), replacementWord);
+  if (!isAsyncSucceeded(result)) {
+    throw new Error(getAsyncErrorMessage(result));
+  }
 
-  const setAsyncResult = await new Promise<Office.AsyncResult<any>>((resolve) => {
-    setSelectedData(updatedText, (asyncResult) => resolve(asyncResult));
-  });
+  const updatedText = replaceWholeWord(result.value, wordToReplace, replacementWord);
+
+  const setAsyncResult = await setSelectedText(state.hostType, updatedText);
 
   if (!isAsyncSucceeded(setAsyncResult)) {
-    alert("Fehler beim Ersetzen des Wortes.");
+    throw new Error(getAsyncErrorMessage(setAsyncResult));
   }
 }
 
 /**
  * Checks if the result of an async Office operation was successful.
- *
- * @param {Office.AsyncResult<any>} result - The result of an Office operation.
- * @returns {boolean} True if the operation was successful, false otherwise.
  */
-export function isAsyncSucceeded(result: Office.AsyncResult<any>): boolean {
+export function isAsyncSucceeded<T>(result: Office.AsyncResult<T>): result is Office.AsyncResult<T> {
   return result.status === Office.AsyncResultStatus.Succeeded;
 }
 
@@ -188,12 +205,10 @@ export function isAsyncSucceeded(result: Office.AsyncResult<any>): boolean {
  * If no findings are left, the buttons and inputs are cleared.
  */
 export function removeFromFindings() {
-  _findings.splice(currentIndex, 1);
-
-  if (_findings.length === 0) {
+  if (removeCurrentFinding()) {
     resetUI();
+    showStatus(domRefs, "Alle Treffer wurden verarbeitet.");
   } else {
-    currentIndex = Math.min(currentIndex, _findings.length - 1);
     updateSelectionMenu();
   }
 }
@@ -203,8 +218,7 @@ export function removeFromFindings() {
  * Updates the menu accordingly.
  */
 export function goToPreviousMatch() {
-  if (currentIndex > 0) {
-    currentIndex--;
+  if (moveToPreviousFinding()) {
     updateSelectionMenu();
   }
 }
@@ -214,8 +228,7 @@ export function goToPreviousMatch() {
  * Updates the menu accordingly.
  */
 export function goToNextMatch() {
-  if (currentIndex < _findings.length - 1) {
-    currentIndex++;
+  if (moveToNextFinding()) {
     updateSelectionMenu();
   }
 }
@@ -225,76 +238,41 @@ export function goToNextMatch() {
  * This is used when there are no findings left.
  */
 function resetUI() {
-  toggleButtons(true);
-  clearInputs();
-}
-
-/**
- * Toggles the enabled/disabled state of buttons.
- *
- * @param {boolean} disabled - Whether to disable or enable the buttons.
- */
-function toggleButtons(disabled: boolean) {
-  applyGenderNeutralButton.disabled = disabled;
-  applyGenderedButton.disabled = disabled || !genderedWordInput.value;
-  genderNeutralWordSelect.disabled = disabled;
-  prevButton.disabled = disabled || currentIndex === 0;
-  nextButton.disabled = disabled || currentIndex === _findings.length - 1;
-}
-
-/**
- * Clears the input fields.
- * This is used to reset the UI after processing.
- */
-function clearInputs() {
-  foundWordInput.value = "";
-  genderNeutralWordSelect.value = "";
-  genderedWordInput.value = "";
-}
-
-/**
- * Retrieves the selected data from the Office document based on the host type.
- *
- * @param {(result: Office.AsyncResult<any>) => void} resolve - The callback function to handle the result.
- */
-function getSelectedData(resolve: (result: Office.AsyncResult<any>) => void) {
-  if (hostType == Office.HostType.Outlook) {
-      return Office.context.mailbox.item?.body.getAsync(Office.CoercionType.Text, (asyncResult) => resolve(asyncResult));
-  } else {
-      return Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, (asyncResult) => resolve(asyncResult));
+  if (!ensureDomRefs()) {
+    return;
   }
-}
 
-/**
- * Sets the selected data in the Office document based on the host type.
- *
- * @param {string} updatedText - The text to be set in the document.
- * @param {(result: Office.AsyncResult<any>) => void} resolve - The callback function to handle the result.
- */
-function setSelectedData(updatedText: string, resolve: (result: Office.AsyncResult<any>) => void) {
-  if (hostType == Office.HostType.Outlook) {
-    return Office.context.mailbox.item?.body.setAsync(updatedText, (asyncResult) => resolve(asyncResult));
-  } else {
-    return Office.context.document.setSelectedDataAsync(updatedText, (asyncResult) => resolve(asyncResult));
-  }
+  toggleButtons(domRefs, true, state.currentIndex, findings().length, false);
+  clearInputs(domRefs);
 }
 
 // Initialize the Office add-in when it's ready.
+function initializeTaskpane() {
+  const start = () => {
+    if (hasRequiredDomElements()) {
+      setup();
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start, { once: true });
+    return;
+  }
+
+  start();
+}
+
 Office.onReady((info) => {
-  hostType = info.host;
-  switch (hostType) {
+  setHostType(info.host);
+  switch (state.hostType) {
     case Office.HostType.Word:
     case Office.HostType.Excel:
     case Office.HostType.PowerPoint:
     case Office.HostType.Outlook:
-      setup();
+      initializeTaskpane();
       break;
     default:
       console.log("Unsupported host application: " + info.host);
       break;
   }
 });
-
-export const setFindings = (newFindings: FindingType[]) => {
-  _findings = newFindings;
-};

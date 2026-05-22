@@ -50,6 +50,25 @@ label {
     justify-content: center;
 }
 
+.status-message {
+    margin: 0 20px 12px;
+    min-height: 22px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: transparent;
+}
+
+.status-info {
+    color: #0f4c81;
+    background-color: #e8f1fa;
+}
+
+.status-error {
+    color: #7a1f1f;
+    background-color: #fdeaea;
+}
+
 .finding-container {
     margin: 20px;
     text-align: center;

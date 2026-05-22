@@ -12,14 +12,14 @@
     "dev_server_port": 3000
   },
   "scripts": {
-    "build": "webpack --mode production",
-    "build:dev": "webpack --mode development",
+    "build": "npm run typecheck && webpack --mode production",
+    "build:dev": "npm run typecheck && webpack --mode development",
     "dev-server": "webpack serve --mode development",
     "lint": "office-addin-lint check",
     "lint:fix": "office-addin-lint fix",
     "prettier": "office-addin-lint prettier",
-    "build:office": "webpack --mode production --env target=office",
-    "build:outlook": "webpack --mode production --env target=outlook",
+    "build:office": "npm run typecheck && webpack --mode production --env target=office",
+    "build:outlook": "npm run typecheck && webpack --mode production --env target=outlook",
     "signin": "office-addin-dev-settings m365-account login",
     "signout": "office-addin-dev-settings m365-account logout",
     "start": "office-addin-debugging start manifests/manifest-office.xml",
@@ -30,13 +30,12 @@
     "stop": "office-addin-debugging stop manifests/manifest-office.xml",
     "validate": "office-addin-manifest validate manifests/manifest-office.xml",
     "watch": "webpack --mode development --watch",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "core-js": "^3.42.0",
-    "form-data": "^4.0.2",
-    "regenerator-runtime": "^0.14.1",
-    "undici": "^8.0.0"
+    "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",
@@ -48,7 +47,6 @@
     "babel-loader": "^10.0.0",
     "copy-webpack-plugin": "^14.0.0",
     "eslint-plugin-office-addins": "^4.0.3",
-    "file-loader": "^6.2.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.3",
     "jest": "^30.0.0",
@@ -59,11 +57,7 @@
     "office-addin-lint": "^3.0.3",
     "office-addin-manifest": "^2.0.3",
     "office-addin-prettier-config": "^2.0.1",
-    "os-browserify": "^0.3.0",
-    "process": "^0.11.10",
-    "source-map-loader": "^5.0.0",
     "ts-jest": "^29.3.4",
-    "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.0",
     "webpack": "^5.99.9",
@@ -77,6 +71,20 @@
   "overrides": {
     "tmp": ">=0.2.4",
     "serialize-javascript": ">=7.0.5",
-    "uuid": "14.0.0"
+    "uuid": "14.0.0",
+    "protobufjs": "8.3.0",
+    "@opentelemetry/sdk-node": "0.218.0",
+    "@opentelemetry/otlp-transformer": "0.218.0",
+    "@opentelemetry/otlp-exporter-base": "0.218.0",
+    "@opentelemetry/otlp-grpc-exporter-base": "0.218.0",
+    "@opentelemetry/exporter-logs-otlp-grpc": "0.218.0",
+    "@opentelemetry/exporter-logs-otlp-http": "0.218.0",
+    "@opentelemetry/exporter-logs-otlp-proto": "0.218.0",
+    "@opentelemetry/exporter-metrics-otlp-grpc": "0.218.0",
+    "@opentelemetry/exporter-metrics-otlp-http": "0.218.0",
+    "@opentelemetry/exporter-metrics-otlp-proto": "0.218.0",
+    "@opentelemetry/exporter-trace-otlp-grpc": "0.218.0",
+    "@opentelemetry/exporter-trace-otlp-http": "0.218.0",
+    "@opentelemetry/exporter-trace-otlp-proto": "0.218.0"
   }
 }
