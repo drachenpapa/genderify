@@ -30,7 +30,7 @@
     "stop": "office-addin-debugging stop manifests/manifest-office.xml",
     "validate": "office-addin-manifest validate manifests/manifest-office.xml",
     "watch": "webpack --mode development --watch",
-    "test": "jest"
+    "test": "jest --config jest.config.cjs"
   },
   "dependencies": {
     "core-js": "^3.42.0",
@@ -39,8 +39,8 @@
     "undici": "^8.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^8.0.0",
-    "@babel/preset-typescript": "^8.0.0",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-typescript": "^7.29.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.6.0",
     "@types/office-js": "^1.0.503",
@@ -65,7 +65,7 @@
     "ts-jest": "^29.4.11",
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
-    "typescript": "^6.0.0",
+    "typescript": "^5.9.3",
     "webpack": "^5.99.9",
     "webpack-cli": "^7.0.0",
     "webpack-dev-server": "5.2.5"
@@ -77,6 +77,8 @@
   "overrides": {
     "tmp": ">=0.2.4",
     "serialize-javascript": ">=7.0.5",
-    "uuid": "14.0.1"
+    "uuid": "14.0.1",
+    "http-proxy-middleware": "2.0.10",
+    "js-yaml": "4.2.0"
   }
 }
