@@ -79,6 +79,6 @@
     "serialize-javascript": ">=7.0.5",
     "uuid": "14.0.1",
     "http-proxy-middleware": "4.1.1",
-    "js-yaml": "5.2.0"
+    "js-yaml": "5.2.1"
   }
 }
