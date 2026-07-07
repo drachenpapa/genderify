@@ -8,10 +8,16 @@ version: 1.0.0
 date-released: 2024-07-04
 url: https://github.com/drachenpapa/genderify
 repository-code: https://github.com/drachenpapa/genderify
-license: CC BY 4.0
+license: MIT
 keywords:
-  - template
+  - gender-inclusive language
+  - office add-in
+  - natural language processing
+  - german
   - open source
-  - GitHub
 abstract: >
-  Genderify tbd.
+  Genderify is an open-source Microsoft Office Add-in and web tool that supports
+  gender-inclusive language in digital documents. It scans selected text for
+  gender-specific German terms and suggests gender-neutral alternatives or
+  gendered variants with a customisable gender character (e.g. *, :, _).
+  The tool covers Word, Excel, PowerPoint, Outlook, and a standalone web frontend.

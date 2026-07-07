@@ -6,7 +6,6 @@
 <p align="center">
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-yellow?style=flat-square" alt="License"></a>
   <img src="https://deploy-badge.vercel.app/vercel/genderify?style=flat-square" alt="Vercel">
-  <img src="https://img.shields.io/badge/snyk-monitored-4C4A73?logo=snyk&style=flat-square" alt="Snyk">
   <img src="https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovate&style=flat-square" alt="Renovate">
 </p>
 
@@ -19,13 +18,24 @@ Durch die Verwendung von Genderify soll die Sichtbarkeit aller Geschlechter in d
 Gendergerechte Sprache ist ein entscheidender Schritt zur Förderung der Gleichstellung der Geschlechter in der Gesellschaft.
 Viele Begriffe in der deutschen Sprache sind geschlechtsspezifisch und spiegeln nicht die Vielfalt der Geschlechteridentitäten wider.
 Daher ist es von großer Bedeutung, die Sprache anzupassen, um alle Menschen anzusprechen.
-Durch die Verwendung gendergerechter Sprache wird Inklusivität gefördert, indem alle Geschlechter angesprochen und Sichtbarkeit sowie Zugehörigkeit geschaffen werden. 
+Durch die Verwendung gendergerechter Sprache wird Inklusivität gefördert, indem alle Geschlechter angesprochen und Sichtbarkeit sowie Zugehörigkeit geschaffen werden.
+
+## Verfügbar als
+
+| Plattform                                   | Beschreibung                                 |
+|---------------------------------------------|----------------------------------------------|
+| 🌍 [Web-Tool](https://genderify.vercel.app) | Direkt im Browser nutzbar, ohne Installation |
+| 📝 Microsoft Word                           | Office Add-in                                |
+| 📊 Microsoft Excel                          | Office Add-in                                |
+| 📽️ Microsoft PowerPoint                    | Office Add-in                                |
+| 📧 Microsoft Outlook                        | Office Add-in                                |
+
+## Hinweise
 
 Dieses Tool schlägt nur gendergerechte Alternativen für deutsche Begriffe vor. Grammatikalische Regeln und Kontexte werden nicht berücksichtigt!
 Beim Verwenden einer gendergerechten Alternative kann es vorkommen, dass der Satzbau anschließend nicht mehr korrekt ist. Es wird keine Unterscheidung zwischen gleichlautenden Singular- und Pluralformen gemacht.
 Der hinterlegte Wortschatz hat keinen Anspruch auf Vollständigkeit.
 Wenn Fehler oder Verbesserungsvorschläge vorliegen, können diese gerne in einem [Issue](https://github.com/drachenpapa/genderify/issues/new/choose) oder Pull-Request eingereicht werden. Beiträge sind willkommen!
-
 
 ---
 
@@ -38,7 +48,19 @@ Many terms in the German language are gender-specific and do not reflect the div
 Therefore, it is essential to adapt the language to address all individuals.
 By using gender-inclusive language, inclusivity is promoted, ensuring that all genders are addressed, creating visibility and a sense of belonging.
 
-This tool only suggests gender-neutral alternatives for german terms. Grammatical rules and contexts are not considered!
+## Available as
+
+| Platform                                    | Description                                           |
+|---------------------------------------------|-------------------------------------------------------|
+| 🌍 [Web Tool](https://genderify.vercel.app) | Use directly in the browser, no installation required |
+| 📝 Microsoft Word                           | Office Add-in                                         |
+| 📊 Microsoft Excel                          | Office Add-in                                         |
+| 📽️ Microsoft PowerPoint                    | Office Add-in                                         |
+| 📧 Microsoft Outlook                        | Office Add-in                                         |
+
+## Notes
+
+This tool only suggests gender-neutral alternatives for German terms. Grammatical rules and contexts are not considered!
 When using a gender-neutral alternative, it may happen that the sentence structure is no longer correct.
 No distinction is made between singular and plural forms with the same spelling.
 The vocabulary provided is not exhaustive. If there are errors or suggestions for improvement, they can be submitted in an [issue](https://github.com/drachenpapa/genderify/issues/new/choose) or a pull request. Contributions are welcome!

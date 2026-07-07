@@ -47,11 +47,14 @@
                         <div class="genderchar-container">
                             <label for="genderChar">Genderzeichen:</label>
                             <input id="genderChar" class="genderchar-input" type="text" value="*" maxlength="1" aria-describedby="genderCharDesc" />
+                            <span id="genderCharDesc" class="sr-only">Einzelnes Zeichen, das zwischen Grundform und -innen eingefügt wird.</span>
                         </div>
 
                         <div class="analyzis-container">
                             <button id="analyze-button" class="analyze-button" aria-label="Text überprüfen">🔍 Überprüfen</button>
                         </div>
+
+                        <p id="status-message" role="status" class="status-message"></p>
 
                         <div id="selection" class="finding-container" aria-live="polite">
                             <div id="foundWordContainer" class="variant-container">
@@ -73,6 +76,7 @@
 
                             <div class="navigation-buttons">
                                 <button id="prev-button" aria-label="Vorheriges Wort">⬅️ Vorheriges</button>
+                                <span id="progress" class="progress-indicator" aria-live="polite"></span>
                                 <button id="next-button" aria-label="Nächstes Wort">➡️ Nächstes</button>
                             </div>
                         </div>
@@ -85,6 +89,6 @@
             <p>&copy; 2024 <a href="https://github.com/drachenpapa">drachenpapa</a>. Alle Rechte vorbehalten.</p>
         </footer>
 
-        <script src="script.js" type="module"></script>
+        <script src="./dist/web.js"></script>
     </body>
 </html>

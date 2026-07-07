@@ -15,3 +15,8 @@ export enum InputIds {
 export enum SelectionIds {
   GenderNeutralWord = "genderNeutralWord"
 }
+
+export enum DisplayIds {
+  Progress = "progress",
+  StatusMessage = "status-message",
+}

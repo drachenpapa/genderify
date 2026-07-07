@@ -2,15 +2,13 @@
   "compilerOptions": {
     "allowJs": true,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "jsx": "react",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "noEmit": true,
     "noEmitOnError": true,
-    "outDir": "dist",
     "resolveJsonModule": true,
     "sourceMap": true,
+    "strict": true,
     "target": "es6",
     "lib": [
       "es2015",

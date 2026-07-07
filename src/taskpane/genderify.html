@@ -16,37 +16,41 @@
 
         <div class="genderchar-container">
             <label for="genderChar">Genderzeichen:</label>
-            <input type="text" class="genderchar-input" id="genderChar" value="*" maxlength="1" />
+            <input type="text" class="genderchar-input" id="genderChar" value="*" maxlength="1" aria-describedby="genderCharDesc" />
+            <span id="genderCharDesc" class="sr-only">Einzelnes Zeichen, das zwischen Grundform und -innen eingefügt wird.</span>
         </div>
 
         <div class="analyzis-container">
             <button class="analyze-button" id="analyze-button">🔍 Überprüfen</button>
         </div>
 
+        <p id="status-message" role="status" class="status-message"></p>
+
         <hr />
 
-        <div class="finding-container" id="selection">
+        <div class="finding-container" id="selection" aria-live="polite">
             <div class="variant-container" id="foundWordContainer">
                 <label for="foundWord">Gefunden:</label>
-                <input type="text" id="foundWord" readonly />
+                <input type="text" id="foundWord" readonly aria-label="Gefundenes Wort" />
             </div>
 
             <div class="variant-container" id="genderNeutralVariantContainer">
                 <label for="genderNeutralWord">Alternative:</label>
-                <select id="genderNeutralWord" disabled>
+                <select id="genderNeutralWord" disabled aria-label="Genderneutrale Alternative auswählen">
                 </select>
-                <button id="applyGenderNeutral" class="action-button" disabled>✔️</button>
+                <button id="applyGenderNeutral" class="action-button" disabled aria-label="Genderneutrale Alternative übernehmen">✔️</button>
             </div>
 
             <div class="variant-container" id="genderedVariantContainer">
                 <label for="genderedWord">Gegendert:</label>
-                <input type="text" id="genderedWord" readonly />
-                <button id="applyGendered" class="action-button" disabled>✔️</button>
+                <input type="text" id="genderedWord" readonly aria-label="Gegenderte Form" />
+                <button id="applyGendered" class="action-button" disabled aria-label="Gegenderte Form übernehmen">✔️</button>
             </div>
 
             <div class="navigation-buttons">
-                <button id="prev-button" disabled>⬅️ Vorheriges</button>
-                <button id="next-button" disabled>➡️ Nächstes</button>
+                <button id="prev-button" disabled aria-label="Vorheriges Wort">⬅️ Vorheriges</button>
+                <span id="progress" class="progress-indicator" aria-live="polite"></span>
+                <button id="next-button" disabled aria-label="Nächstes Wort">➡️ Nächstes</button>
             </div>
         </div>
     </body>

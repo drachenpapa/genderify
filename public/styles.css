@@ -130,12 +130,52 @@ button:hover {
 .navigation-buttons {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     margin-top: 10px;
 }
 
 .navigation-buttons button {
     margin: 0 5px;
+}
+
+.progress-indicator {
+    font-size: 0.875em;
+    color: #555555;
+    min-width: 3.5em;
+    text-align: center;
+}
+
+.status-message {
+    margin: 5px 0;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-align: center;
+    min-height: 1.5em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.status-message.error {
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+}
+
+.status-message.info {
+    color: #555555;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 select#genderNeutralWord {

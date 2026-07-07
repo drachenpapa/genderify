@@ -22,6 +22,7 @@ module.exports = async (env, options) => {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: path.resolve(__dirname, './src/taskpane/genderify.ts'),
       commands: path.resolve(__dirname, './src/commands/commands.ts'),
+      web: path.resolve(__dirname, './src/web/script.ts'),
     },
     output: {
       filename: '[name].js',
@@ -78,10 +79,6 @@ module.exports = async (env, options) => {
             transform(content) {
               return dev ? content : content.toString().replace(new RegExp(urlDev, "g"), urlProd);
             }
-          },
-          {
-            from: path.resolve(__dirname, "./src/taskpane/genderDictionary.json"),
-            to: path.resolve(__dirname, "public/dist")
           }
         ],
       }),
