@@ -41,8 +41,8 @@ Before making recommendations or changes, inspect:
 * CI configuration
 * tests
 * relevant source files
-* `docs/architecture.md`, if present
-* `docs/conventions.md`, if present
+* `.github/copilot/architecture.md`, if present
+* `.github/copilot/conventions.md`, if present
 
 Do not infer architecture from a single file. Understand the surrounding context first.
 
