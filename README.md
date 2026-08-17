@@ -27,7 +27,7 @@ Durch die Verwendung gendergerechter Sprache wird Inklusivität gefördert, inde
 | 🌍 [Web-Tool](https://genderify.vercel.app) | Direkt im Browser nutzbar, ohne Installation |
 | 📝 Microsoft Word                           | Office Add-in                                |
 | 📊 Microsoft Excel                          | Office Add-in                                |
-| 📽️ Microsoft PowerPoint                    | Office Add-in                                |
+| 📽️ Microsoft PowerPoint                     | Office Add-in                                |
 | 📧 Microsoft Outlook                        | Office Add-in                                |
 
 ## Hinweise
@@ -55,7 +55,7 @@ By using gender-inclusive language, inclusivity is promoted, ensuring that all g
 | 🌍 [Web Tool](https://genderify.vercel.app) | Use directly in the browser, no installation required |
 | 📝 Microsoft Word                           | Office Add-in                                         |
 | 📊 Microsoft Excel                          | Office Add-in                                         |
-| 📽️ Microsoft PowerPoint                    | Office Add-in                                         |
+| 📽️ Microsoft PowerPoint                     | Office Add-in                                         |
 | 📧 Microsoft Outlook                        | Office Add-in                                         |
 
 ## Notes

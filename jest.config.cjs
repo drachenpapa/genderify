@@ -1,14 +1,9 @@
 /** @type {import('jest').Config} */
 const config = {
-  preset: 'ts-jest',
   testEnvironment: 'jsdom',
+  setupFiles: ['./src/__tests__/setup.ts'],
   transform: {
-    '^.+\\.ts$': [
-      'ts-jest',
-      {
-        tsconfig: './tsconfig.jest.json'
-      }
-    ]
+    '^.+\\.ts$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
