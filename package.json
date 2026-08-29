@@ -73,7 +73,7 @@
     "serialize-javascript": ">=7.1.0",
     "uuid": "14.0.2",
     "http-proxy-middleware": "4.2.0",
-    "js-yaml": "5.4.0",
+    "js-yaml": "5.4.1",
     "brace-expansion": ">=2.1.2",
     "adm-zip": ">=0.6.0"
   }
