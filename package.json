@@ -55,7 +55,7 @@
     "office-addin-dev-certs": "^2.0.3",
     "office-addin-lint": "^3.0.3",
     "office-addin-manifest": "^2.0.3",
-    "office-addin-prettier-config": "^2.0.1",
+    "office-addin-prettier-config": "^3.0.0",
     "os-browserify": "^0.3.0",
     "process": "^0.11.10",
     "ts-node": "^10.9.2",
