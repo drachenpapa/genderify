@@ -313,7 +313,7 @@ beforeEach(() => {
 | Module-level `let` / `var` for mutable state  | State must live inside `GenderifyApp`. Module-level globals make tests unreliable.                       |
 | Test-only exports in production modules       | Indicates that state is not properly encapsulated. Use the class pattern instead.                        |
 | Hardcoded URLs in TypeScript / JavaScript     | URLs belong in `webpack.config.js` constants where they can be substituted at build time.                |
-| `ts-loader` or `source-map-loader` in Webpack | The project uses `babel-loader` for Webpack builds. Do not add competing TS loaders.                     |
+| `babel-loader` in Webpack                     | The project uses `ts-loader` for Webpack builds so type errors fail the build. Do not reintroduce Babel for transpilation there. | 
 | A second Jest config file                     | `jest.config.cjs` is the active configuration. `jest.config.ts` exists only as a deprecated placeholder. |
 | Fetching `genderDictionary.json` at runtime   | The dictionary is bundled statically. No HTTP dependency at runtime.                                     |
 | UI frameworks (React, Vue, Svelte, etc.)      | The UI is intentionally minimal. A framework would add build complexity and bundle size for no gain.     |

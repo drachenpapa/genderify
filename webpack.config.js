@@ -41,9 +41,9 @@ module.exports = async (env, options) => {
           test: /\.ts$/,
           exclude: /node_modules/,
           use: {
-            loader: "babel-loader",
+            loader: "ts-loader",
             options: {
-              presets: ["@babel/preset-typescript"],
+              compilerOptions: { noEmit: false },
             },
           },
         },

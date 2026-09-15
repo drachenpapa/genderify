@@ -97,7 +97,7 @@ genderify/
 ├── webpack.config.js
 ├── tsconfig.json                 # Main TypeScript config (noEmit; Webpack drives the build)
 ├── tsconfig.jest.json            # TypeScript config override for Jest (CommonJS output)
-├── babel.config.json             # Babel preset for TypeScript (used by Webpack)
+├── babel.config.json             # Babel preset for TypeScript (used by Jest via babel-jest)
 └── jest.config.cjs               # Active Jest configuration
 ```
 
@@ -286,9 +286,7 @@ Four entry points produce four output files in `public/dist/`:
 | `commands` | `commands.js` | Office command handler                   |
 | `web`      | `web.js`      | Web tool logic                           |
 
-TypeScript is transpiled by **Babel** (`babel-loader` + `@babel/preset-typescript`). Type checking is **not** performed during the Webpack build; it is done separately via `tsc --noEmit`.
-
-> ⚠️ Assumption: Because Babel strips types without checking them, a type error would not fail the Webpack build. Run `npm run build` (Webpack) and `npx tsc --noEmit` as separate steps to get a complete safety check.
+TypeScript is compiled by **`ts-loader`**, which type-checks during the Webpack build (`tsconfig.json`'s `"noEmit": true` is overridden to `false` in the loader options so it can emit JS). A type error fails the Webpack build.
 
 The production build replaces the development URL (`https://localhost:3000/`) with the production URL (`https://genderify.vercel.app/`) in the copied manifest XML files.
 
@@ -326,7 +324,7 @@ The three host blocks in `manifest-office.xml` (Document, Presentation, Workbook
 | Dependency                         | Purpose                                             |
 |------------------------------------|-----------------------------------------------------|
 | Webpack 5                          | Bundler                                             |
-| Babel + `@babel/preset-typescript` | TypeScript transpilation in Webpack                 |
+| `ts-loader`                        | Type-checked TypeScript compilation in Webpack      |
 | `office-addin-dev-certs`           | Local HTTPS dev certificates                        |
 | `office-addin-debugging`           | Start/stop add-in debugging                         |
 | `office-addin-lint`                | ESLint + Prettier preset for Office add-ins         |
@@ -335,11 +333,11 @@ The three host blocks in `manifest-office.xml` (Document, Presentation, Workbook
 
 ### Testing
 
-| Dependency               | Purpose                                                |
-|--------------------------|--------------------------------------------------------|
-| Jest 30                  | Test runner                                            |
-| `ts-jest`                | TypeScript support in Jest (uses `tsconfig.jest.json`) |
-| `jest-environment-jsdom` | Browser DOM simulation                                 |
+| Dependency               | Purpose                                                       |
+|--------------------------|----------------------------------------------------------------|
+| Jest 30                  | Test runner                                                    |
+| `babel-jest` (bundled) + `@babel/preset-typescript` | TypeScript support in Jest              |
+| `jest-environment-jsdom` | Browser DOM simulation                                         |
 
 ---
 
@@ -350,7 +348,7 @@ The three host blocks in `manifest-office.xml` (Document, Presentation, Workbook
 | `webpack.config.js`            | Build entries, loaders, plugins, dev server, URL substitution |
 | `tsconfig.json`                | TypeScript compiler options for IDE and `tsc --noEmit`        |
 | `tsconfig.jest.json`           | TypeScript overrides for Jest (CommonJS, emit enabled)        |
-| `babel.config.json`            | Babel presets used by `babel-loader`                          |
+| `babel.config.json`            | Babel presets used by Jest (`babel-jest`)                      |
 | `jest.config.cjs`              | Jest configuration (active)                                   |
 | `package.json` → `"config"`    | Dev server port and target app for `office-addin-debugging`   |
 | `package.json` → `"overrides"` | Forced versions of transitive dependencies for security fixes |
@@ -418,9 +416,9 @@ The `genderDictionary.json` import is mocked via `jest.mock(...)` with a minimal
 
 All HTML element IDs used by the Office Add-in are declared in `src/taskpane/enums.ts`. This makes ID renames refactor-safe in TypeScript, is consistent across HTML, TypeScript, and tests, and serves as a central reference. The web tool uses the same string values but does not import the enums.
 
-### 4. Babel for Webpack, ts-jest for tests
+### 4. `ts-loader` for Webpack, Babel for tests
 
-Webpack transpiles TypeScript via Babel (fast, no type checking). Tests use ts-jest (type-aware, uses a separate `tsconfig.jest.json`). The split is pragmatic: build speed vs. test correctness.
+Webpack compiles TypeScript via `ts-loader` (type-checked, fails the build on type errors). Tests use `babel-jest` (fast transpile, no type checking) since Jest doesn't need the same build-time safety net and Babel keeps test startup quick.
 
 ### 5. Dictionary bundled, not fetched
 
@@ -451,7 +449,7 @@ All user-facing error and status messages are rendered in `<p id="status-message
 - **No UI framework.** The UI is minimal (a handful of inputs, a select, a few buttons). Introducing React or similar would add significant overhead for no benefit.
 - **No state management library.** `GenderifyApp` private fields are sufficient. The state is trivial.
 - **No backend.** The dictionary is static. All processing is client-side. There is no reason to introduce a server.
-- **No build pipeline beyond Webpack.** The current Webpack + Babel setup is straightforward. Avoid adding Vite, Rollup, or other bundlers.
+- **No build pipeline beyond Webpack.** The current Webpack + `ts-loader` setup is straightforward. Avoid adding Vite, Rollup, or other bundlers.
 - **No internationalisation framework.** The tool is German-language by design. UI strings are hardcoded in German.
 - **No component library.** Plain HTML + CSS is appropriate for the add-in task pane size and the web tool's simple layout.
 - **No routing.** Both frontends are single-screen applications.
