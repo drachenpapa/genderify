@@ -59,7 +59,7 @@
     "process": "^0.11.10",
     "ts-loader": "^9.5.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.3",
+    "typescript": "^7.0.0",
     "webpack": "^5.99.9",
     "webpack-cli": "^7.0.0",
     "webpack-dev-server": "6.0.0"
