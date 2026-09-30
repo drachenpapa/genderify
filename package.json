@@ -1,5 +1,5 @@
 {
-  "name": "Genderify",
+  "name": "genderify",
   "version": "1.0.0",
   "repository": {
     "type": "git",
@@ -70,11 +70,11 @@
   },
   "overrides": {
     "tmp": ">=0.2.4",
-    "serialize-javascript": ">=7.1.0",
+    "serialize-javascript": "7.1.2",
     "uuid": "14.0.2",
     "http-proxy-middleware": "4.2.0",
     "js-yaml": "5.4.2",
-    "brace-expansion": ">=2.1.2",
+    "brace-expansion": "5.0.12",
     "adm-zip": ">=0.6.0"
   }
 }
