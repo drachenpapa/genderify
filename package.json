@@ -40,7 +40,7 @@
     "@babel/core": "^8.0.0",
     "@babel/preset-typescript": "^8.0.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^25.6.0",
+    "@types/node": "^26.0.0",
     "@types/office-js": "^1.0.607",
     "@types/office-runtime": "^1.0.35",
     "copy-webpack-plugin": "^14.0.0",
